@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/i18n">
+        <file>esp_en.qm</file>
+        <file>esp_zh_CN.qm</file>
+        <file>esp_zh_TW.qm</file>
+        <file>esp_ja.qm</file>
+        <file>esp_ko.qm</file>
+        <file>esp_de.qm</file>
+        <file>esp_fr.qm</file>
+        <file>esp_es.qm</file>
+        <file>esp_ru.qm</file>
+        <file>qtbase_zh_CN.qm</file>
+        <file>qtbase_zh_TW.qm</file>
+        <file>qtbase_ja.qm</file>
+        <file>qtbase_ko.qm</file>
+        <file>qtbase_de.qm</file>
+        <file>qtbase_fr.qm</file>
+        <file>qtbase_es.qm</file>
+        <file>qtbase_ru.qm</file>
+    </qresource>
+</RCC>

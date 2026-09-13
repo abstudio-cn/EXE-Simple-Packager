@@ -1,0 +1,39 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 21,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "windows-static-qt",
+      "displayName": "Windows x64 · 静态 Qt 6.9.3",
+      "description": "Release 静态链接配置（自包含单文件 exe）",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_PREFIX_PATH": "C:/Qt/6.9.3-static-msvc2022_64"
+      }
+    },
+    {
+      "name": "windows-vs",
+      "displayName": "Windows x64 · VS 工程",
+      "description": "生成 build-vs 解决方案（ExeSimplePackager.slnx）",
+      "generator": "Visual Studio 18 2026",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/build-vs",
+      "cacheVariables": {
+        "CMAKE_PREFIX_PATH": "C:/Qt/6.9.3-static-msvc2022_64"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "windows-static-qt",
+      "configurePreset": "windows-static-qt",
+      "configuration": "Release"
+    }
+  ]
+}
