@@ -155,7 +155,10 @@ void UninstallRunner::killMainProcess()
         pe.dwSize = sizeof(pe);
         if (Process32FirstW(snap, &pe)) {
             do {
-                if (QString::fromWCharArray(pe.szExeFile).compare(procName, Qt::CaseInsensitive) == 0)
+                // 注意：szExeFile 是带扩展名的映像名（如 MyApp.exe），
+                // 必须取 completeBaseName 再比较，否则永远匹配不到 → 运行中的程序不被结束。
+                const QString imageName = QString::fromWCharArray(pe.szExeFile);
+                if (QFileInfo(imageName).completeBaseName().compare(procName, Qt::CaseInsensitive) == 0)
                     pids.append(pe.th32ProcessID);
             } while (Process32NextW(snap, &pe));
         }

@@ -45,6 +45,10 @@ add_library(esp_shared STATIC
     Shared/InstallCore.cpp
     Shared/UninstallRunner.cpp
     Shared/Theme.cpp
+    Shared/ThemeSpec.cpp
+    Shared/ThemePreview.cpp
+    Shared/PythonEnv.cpp
+    Shared/PythonPack.cpp
     Shared/IconExtract.cpp
     Shared/thirdparty/miniz.c
 )
@@ -64,13 +68,16 @@ set_source_files_properties(Shared/thirdparty/miniz.c PROPERTIES LANGUAGE C)
 set(ESPPACKAGER_ICO_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Packager/ESPackager.ico")
 set(ESPSETUP_ICO_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Setup/ESPSetup.ico")
 set(ESPUNINSTALL_ICO_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Uninstall/ESPUninstall.ico")
+set(ESPLAUNCHER_ICO_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Launcher/ESPLauncher.ico")
 # RC 的 ICON 路径需反斜杠
 string(REPLACE "/" "\\\\" ESPPACKAGER_ICO_PATH "${ESPPACKAGER_ICO_PATH}")
 string(REPLACE "/" "\\\\" ESPSETUP_ICO_PATH "${ESPSETUP_ICO_PATH}")
 string(REPLACE "/" "\\\\" ESPUNINSTALL_ICO_PATH "${ESPUNINSTALL_ICO_PATH}")
+string(REPLACE "/" "\\\\" ESPLAUNCHER_ICO_PATH "${ESPLAUNCHER_ICO_PATH}")
 configure_file(Packager/ESPackager.rc.in ${CMAKE_CURRENT_BINARY_DIR}/Packager/ESPPackager.rc @ONLY)
 configure_file(Setup/ESPSetup.rc.in ${CMAKE_CURRENT_BINARY_DIR}/Setup/ESPSetup.rc @ONLY)
 configure_file(Uninstall/ESPUninstall.rc.in ${CMAKE_CURRENT_BINARY_DIR}/Uninstall/ESPUninstall.rc @ONLY)
+configure_file(Launcher/ESPLauncher.rc.in ${CMAKE_CURRENT_BINARY_DIR}/Launcher/ESPLauncher.rc @ONLY)
 
 # ============ 内嵌多语言翻译（qrc 打包进 exe） ============
 set(I18N_QRC ${CMAKE_CURRENT_SOURCE_DIR}/assets/i18n/i18n.qrc)
@@ -79,6 +86,8 @@ set(I18N_QRC ${CMAKE_CURRENT_SOURCE_DIR}/assets/i18n/i18n.qrc)
 add_executable(ESPackager WIN32
     Packager/main.cpp
     Packager/PackagerWindow.cpp
+    Packager/ThemeEditor.cpp
+    Packager/PythonPanel.cpp
     ${I18N_QRC}
     ${CMAKE_CURRENT_BINARY_DIR}/Packager/ESPPackager.rc
 )
@@ -113,7 +122,31 @@ target_link_libraries(ESPUninstall PRIVATE esp_shared shell32)
 set_source_files_properties(${CMAKE_CURRENT_BINARY_DIR}/Uninstall/ESPUninstall.rc PROPERTIES
     COMPILE_FLAGS "/I\"${CMAKE_CURRENT_SOURCE_DIR}/Uninstall\"")
 
+# ============ Python 应用启动器（无 Qt，约 100 KB） ============
+# 随 Python 应用封包携带：在本进程内加载 python3XX.dll 并调用 Py_Main，
+# 因此进程名就是应用名，任务管理器/卸载器按名字精确结束进程。
+# 两个变体：窗口版（GUI 子系统，不弹控制台）与控制台版。
+set(LAUNCHER_RC ${CMAKE_CURRENT_BINARY_DIR}/Launcher/ESPLauncher.rc)
+set_source_files_properties(${LAUNCHER_RC} PROPERTIES
+    COMPILE_FLAGS "/I\"${CMAKE_CURRENT_SOURCE_DIR}/Launcher\" /I\"${CMAKE_CURRENT_SOURCE_DIR}/Shared\"")
+
+add_executable(ESPLauncher WIN32
+    Launcher/main.cpp
+    ${LAUNCHER_RC}
+)
+target_link_libraries(ESPLauncher PRIVATE shell32)
+target_compile_definitions(ESPLauncher PRIVATE UNICODE _UNICODE)
+
+add_executable(ESPLauncherC
+    Launcher/main.cpp
+    ${LAUNCHER_RC}
+)
+target_link_libraries(ESPLauncherC PRIVATE shell32)
+target_compile_definitions(ESPLauncherC PRIVATE UNICODE _UNICODE ESP_LAUNCHER_CONSOLE)
+
 # 输出到 build/bin
-set_target_properties(ESPackager ESPSetup ESPUninstall PROPERTIES
+set_target_properties(ESPackager ESPSetup ESPUninstall ESPLauncher ESPLauncherC PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+    MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+set_target_properties(ESPLauncher ESPLauncherC PROPERTIES
     MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")

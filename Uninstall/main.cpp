@@ -2,6 +2,7 @@
 #include "UninstallWindow.h"
 
 #include "../Shared/Theme.h"
+#include "../Shared/ThemeSpec.h"
 #include "../Shared/UninstallRunner.h"
 
 #include <QApplication>
@@ -43,19 +44,30 @@ bool relaunchElevated(const QStringList &args)
     return reinterpret_cast<INT_PTR>(h) > 32;
 }
 
-// 静默卸载：/quiet [/ini=path]；日志写 %TEMP%\ESPUninstall.log
-int quietUninstall(const QStringList &args)
+// 从命令行解析 uninstall.ini 路径（默认与卸载器同目录）
+QString iniPathFromArgs(const QStringList &args)
 {
-    if (AttachConsole(ATTACH_PARENT_PROCESS)) {
-        freopen("CONOUT$", "w", stdout);
-        freopen("CONOUT$", "w", stderr);
-    }
     QString iniPath = QDir(QApplication::applicationDirPath()).filePath(QStringLiteral("uninstall.ini"));
     for (int i = 0; i + 1 < args.size(); ++i) {
         if (args[i].compare(QLatin1String("/ini"), Qt::CaseInsensitive) == 0
             || args[i].compare(QLatin1String("--ini"), Qt::CaseInsensitive) == 0)
             iniPath = args[i + 1];
     }
+    return iniPath;
+}
+
+// 静默卸载：/quiet [/ini=path]；日志写 %TEMP%\ESPUninstall.log
+int quietUninstall(const QStringList &args)
+{
+    // 仅在未被重定向时才接管父控制台（否则会把输出丢回控制台，脚本抓不到）
+    const HANDLE outHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+    if (!outHandle || outHandle == INVALID_HANDLE_VALUE) {
+        if (AttachConsole(ATTACH_PARENT_PROCESS)) {
+            freopen("CONOUT$", "w", stdout);
+            freopen("CONOUT$", "w", stderr);
+        }
+    }
+    const QString iniPath = iniPathFromArgs(args);
     const QString logPath = QDir::temp().filePath(QStringLiteral("ESPUninstall.log"));
     QFile log(logPath);
     log.open(QIODevice::Append | QIODevice::Text);
@@ -75,7 +87,6 @@ int quietUninstall(const QStringList &args)
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    app.setStyleSheet(globalStyleSheet());
     app.setWindowIcon(appIcon(32));
     installTranslations(app);
 
@@ -83,6 +94,11 @@ int main(int argc, char *argv[])
     app.setFont(f);
 
     const QStringList args = app.arguments().mid(1);
+    const QString iniPath = iniPathFromArgs(args);
+
+    // 安装时保存的卸载器外观（uninstall.ini [Theme] + 背景图）；无配置则默认外观
+    const ThemeStyle theme = loadUninstallTheme(iniPath);
+    app.setStyleSheet(globalStyleSheet(theme));
 
     // 卸载需要管理员权限（删 Program Files 文件 / HKLM 注册表）：
     // 非提权启动时以 runas 重启自身，用户取消则给出友好提示并退出，
@@ -110,14 +126,7 @@ int main(int argc, char *argv[])
             return quietUninstall(args);
     }
 
-    QString iniPath = QDir(QApplication::applicationDirPath()).filePath(QStringLiteral("uninstall.ini"));
-    for (int i = 0; i + 1 < args.size(); ++i) {
-        if (args[i].compare(QLatin1String("/ini"), Qt::CaseInsensitive) == 0
-            || args[i].compare(QLatin1String("--ini"), Qt::CaseInsensitive) == 0)
-            iniPath = args[i + 1];
-    }
-
-    UninstallWindow w(iniPath);
+    UninstallWindow w(iniPath, theme);
     w.show();
     return app.exec();
 }

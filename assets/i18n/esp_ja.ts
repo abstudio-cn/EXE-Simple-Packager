@@ -48,6 +48,17 @@
 %1</source><translation>パッケージ化に失敗しました：
 %1</translation></message>
 <message><source>[提示] 源目录含多个 exe（%1），已默认选择 %2，可手动更改。</source><translation>[ヒント] ソースディレクトリに複数の exe があります（%1）。既定で %2 を選択しました。手動で変更できます。</translation></message>
+<message><source>[警告] 未知的主题预设：%1</source><translation>[警告] 不明なテーマプリセット：%1</translation></message>
+<message><source>[警告] 颜色格式非法（应为 #RRGGBB）：%1</source><translation>[警告] 色の形式が不正です（#RRGGBB が必要）：%1</translation></message>
+<message><source>[错误] </source><translation>[エラー] </translation></message>
+<message><source>[错误] /auto 模式需要 /dir 与 /out 参数。</source><translation>[エラー] /auto モードには /dir と /out 引数が必要です。</translation></message>
+<message><source>卸载器主题</source><translation>アンインストーラーのテーマ</translation></message>
+<message><source>安装器主题</source><translation>インストーラーのテーマ</translation></message>
+<message><source>已载入背景图 %1（%2×%3，%4 KB）。</source><translation>背景画像 %1 を読み込みました（%2×%3、%4 KB）。</translation></message>
+<message><source>自定义安装器 / 卸载器的配色与背景图，右侧为实时预览</source><translation>インストーラー / アンインストーラーの配色と背景画像をカスタマイズ。右側はリアルタイムプレビュー</translation></message>
+<message><source>Python 打包</source><translation>Python パッケージ</translation></message>
+<message><source>Python 应用：入口为打包生成的 &lt;应用名&gt;.exe（随包启动器）</source><translation>Python アプリ：エントリーポイントは生成された &lt;アプリ名&gt;.exe（同梱ランチャー）です</translation></message>
+<message><source>[提示] </source><translation>[ヒント] </translation></message>
 </context>
 <context><name>PackTask</name>
 <message><source>[错误] 缺少卸载器：%1（请确认 ESPUninstall.exe 与 ESPSetup.exe 位于同一目录）</source><translation>[エラー] アンインストーラーが見つかりません：%1（ESPUninstall.exe と ESPSetup.exe が同じディレクトリにあることを確認してください）</translation></message>
@@ -60,6 +71,18 @@
 <message><source>安装包生成完成，大小 %1 KB。</source><translation>インストーラーの生成が完了しました。サイズ %1 KB。</translation></message>
 <message><source>已提取主程序图标（%1 字节），随封包内嵌。</source><translation>メインプログラムのアイコンを抽出しました（%1 バイト）。パッケージに埋め込みます。</translation></message>
 <message><source>[警告] 未能提取主程序图标：%1，安装器将使用默认图标。</source><translation>[警告] メインプログラムのアイコンを抽出できませんでした：%1。既定のアイコンを使用します。</translation></message>
+<message><source>卸载器背景图 %1 KB（%2，不透明度 %3%）。</source><translation>アンインストーラーの背景画像 %1 KB（%2、不透明度 %3%）。</translation></message>
+<message><source>安装器主色 %1 / 副色 %2；卸载器主色 %3 / 副色 %4。</source><translation>インストーラーのメイン色 %1 / サブ色 %2、アンインストーラーのメイン色 %3 / サブ色 %4。</translation></message>
+<message><source>安装器背景图 %1 KB（%2，不透明度 %3%）。</source><translation>インストーラーの背景画像 %1 KB（%2、不透明度 %3%）。</translation></message>
+<message><source>[错误] 无法创建临时目录。</source><translation>[エラー] 一時ディレクトリを作成できませんでした。</translation></message>
+<message><source>无法创建临时目录</source><translation>一時ディレクトリを作成できませんでした</translation></message>
+<message><source>Python 模式：解释器 %1</source><translation>Python モード：インタープリター %1</translation></message>
+<message><source>[警告] </source><translation>[警告] </translation></message>
+<message><source>已生成启动器 %1（%2 子系统）。</source><translation>ランチャー %1 を生成しました（%2 サブシステム）。</translation></message>
+<message><source>未能收集 Python 运行时文件：%1</source><translation>Python ランタイムファイルを収集できませんでした：%1</translation></message>
+<message><source>随包携带 Python 运行时：%1 个文件，%2 MB。</source><translation>Python ランタイムを同梱：%1 個のファイル、%2 MB。</translation></message>
+<message><source>[提示] </source><translation>[ヒント] </translation></message>
+<message><source>项目文件将安装到 app\ 子目录，入口脚本 %1</source><translation>プロジェクトファイルは app\ サブディレクトリにインストールされます。エントリースクリプト %1</translation></message>
 </context>
 <context><name>WizardWindow</name>
 <message><source>安装向导 · %1</source><translation>インストールウィザード · %1</translation></message>
@@ -120,6 +143,7 @@
 %3</translation></message>
 <message><source>%1 已成功安装到您的计算机。</source><translation>%1 は正常にインストールされました。</translation></message>
 <message><source>安装失败</source><translation>インストールに失敗しました</translation></message>
+<message><source>浏览…</source><translation>参照…</translation></message>
 </context>
 <context><name>UninstallWindow</name>
 <message><source>卸载 · %1</source><translation>アンインストール · %1</translation></message>
@@ -165,6 +189,8 @@
 <message><source>已固定到任务栏。</source><translation>タスクバーにピン留めしました。</translation></message>
 <message><source>安装完成。</source><translation>インストールが完了しました。</translation></message>
 <message><source>安装流程结束，有 %1 个步骤未成功。</source><translation>インストール処理が終了しました。%1 個のステップが失敗しました。</translation></message>
+<message><source>写入卸载器主题背景图失败，卸载器将使用纯色主题。</source><translation>アンインストーラーのテーマ背景画像の書き込みに失敗しました。単色テーマを使用します。</translation></message>
+<message><source>已写入卸载器主题背景图（%1 KB）。</source><translation>アンインストーラーのテーマ背景画像を書き込みました（%1 KB）。</translation></message>
 </context>
 <context><name>UninstallRunner</name>
 <message><source>未知程序</source><translation>不明なプログラム</translation></message>
@@ -220,6 +246,12 @@
 <message><source>读取负载数据不完整。</source><translation>ペイロードデータの読み取りが不完全です。</translation></message>
 <message><source>无法打开安装器存根：%1</source><translation>インストーラースタブを開けません：%1</translation></message>
 <message><source>无法创建输出文件：%1</source><translation>出力ファイルを作成できません：%1</translation></message>
+<message><source>主题块损坏（标记缺失）。</source><translation>テーマブロックが破損しています（マーカーがありません）。</translation></message>
+<message><source>主题块长度非法。</source><translation>テーマブロックの長さが不正です。</translation></message>
+<message><source>定位主题块失败。</source><translation>テーマブロックの位置を特定できませんでした。</translation></message>
+<message><source>封包索引中的主题块范围非法（文件可能被截断）。</source><translation>パッケージインデックスのテーマブロック範囲が不正です（ファイルが切り詰められている可能性があります）。</translation></message>
+<message><source>读取卸载器背景图失败。</source><translation>アンインストーラーの背景画像の読み込みに失敗しました。</translation></message>
+<message><source>读取安装器背景图失败。</source><translation>インストーラーの背景画像の読み込みに失敗しました。</translation></message>
 </context>
 <context><name>ZipHelper</name>
 <message><source>目录不存在：%1</source><translation>ディレクトリが存在しません：%1</translation></message>
@@ -243,5 +275,132 @@
 <message><source>创建注册表键失败 %1：</source><translation>レジストリキーの作成に失敗しました %1：</translation></message>
 <message><source>写入注册表值失败 %1\%2：</source><translation>レジストリ値の書き込みに失敗しました %1\%2：</translation></message>
 <message><source>删除注册表键失败 %1：</source><translation>レジストリキーの削除に失敗しました %1：</translation></message>
+</context>
+<context><name>ThemeEditor</name>
+<message><source>%1（%2×%3，%4 KB）</source><translation>%1（%2×%3、%4 KB）</translation></message>
+<message><source>上一步</source><translation>戻る</translation></message>
+<message><source>不透明度</source><translation>不透明度</translation></message>
+<message><source>主色</source><translation>メイン色</translation></message>
+<message><source>侧栏主色</source><translation>サイドバーのメイン色</translation></message>
+<message><source>侧栏副色</source><translation>サイドバーのサブ色</translation></message>
+<message><source>副色</source><translation>サブ色</translation></message>
+<message><source>卸载</source><translation>アンインストール</translation></message>
+<message><source>卸载 · %1</source><translation>アンインストール · %1</translation></message>
+<message><source>卸载向导</source><translation>アンインストールウィザード</translation></message>
+<message><source>取消</source><translation>キャンセル</translation></message>
+<message><source>图片文件 (*.png *.jpg *.jpeg *.bmp *.webp *.gif);;所有文件 (*.*)</source><translation>画像ファイル (*.png *.jpg *.jpeg *.bmp *.webp *.gif);;すべてのファイル (*.*)</translation></message>
+<message><source>填充方式</source><translation>表示方法</translation></message>
+<message><source>安装</source><translation>インストール</translation></message>
+<message><source>安装向导</source><translation>インストールウィザード</translation></message>
+<message><source>安装向导 · %1</source><translation>インストールウィザード · %1</translation></message>
+<message><source>安装完成</source><translation>インストール完了</translation></message>
+<message><source>安装选项</source><translation>インストールオプション</translation></message>
+<message><source>完成</source><translation>完了</translation></message>
+<message><source>居中</source><translation>中央</translation></message>
+<message><source>已选择</source><translation>選択済み</translation></message>
+<message><source>平铺</source><translation>タイル</translation></message>
+<message><source>拉伸</source><translation>拡大</translation></message>
+<message><source>效果预览</source><translation>プレビュー</translation></message>
+<message><source>未选择</source><translation>未選択</translation></message>
+<message><source>欢迎</source><translation>ようこそ</translation></message>
+<message><source>正在卸载</source><translation>アンインストール中</translation></message>
+<message><source>正在安装</source><translation>インストール中</translation></message>
+<message><source>正在读取图片…</source><translation>画像を読み込み中…</translation></message>
+<message><source>清除</source><translation>クリア</translation></message>
+<message><source>点击选择颜色</source><translation>クリックして色を選択</translation></message>
+<message><source>确认卸载</source><translation>アンインストールの確認</translation></message>
+<message><source>示例程序</source><translation>サンプルアプリ</translation></message>
+<message><source>背景图片</source><translation>背景画像</translation></message>
+<message><source>自定义</source><translation>カスタム</translation></message>
+<message><source>许可协议</source><translation>使用許諾契約</translation></message>
+<message><source>读取失败</source><translation>読み込み失敗</translation></message>
+<message><source>适应（留边）</source><translation>全体表示（余白あり）</translation></message>
+<message><source>选择图片…</source><translation>画像を選択…</translation></message>
+<message><source>选择背景图片</source><translation>背景画像を選択</translation></message>
+<message><source>铺满（裁剪）</source><translation>画面いっぱい（切り抜き）</translation></message>
+<message><source>预设配色</source><translation>プリセット配色</translation></message>
+</context>
+<context><name>ThemeSpec</name>
+<message><source>品红</source><translation>マゼンタ</translation></message>
+<message><source>图片编码失败：%1</source><translation>画像のエンコードに失敗しました：%1</translation></message>
+<message><source>图片解码失败：%1（%2）</source><translation>画像のデコードに失敗しました：%1（%2）</translation></message>
+<message><source>无法读取图片：%1（%2）</source><translation>画像を読み込めません：%1（%2）</translation></message>
+<message><source>深海蓝</source><translation>ディープブルー</translation></message>
+<message><source>玫瑰红</source><translation>ローズ</translation></message>
+<message><source>石墨灰</source><translation>グラファイト</translation></message>
+<message><source>经典蓝紫</source><translation>クラシックブルーパープル</translation></message>
+<message><source>翠绿</source><translation>エメラルド</translation></message>
+<message><source>落日橙</source><translation>サンセットオレンジ</translation></message>
+<message><source>青色</source><translation>ティール</translation></message>
+</context>
+<context><name>PythonEnv</name>
+<message><source>目录内未找到 python3XX.dll，不是完整的 Python 安装</source><translation>ディレクトリ内に python3XX.dll が見つかりません。完全な Python インストールではありません</translation></message>
+<message><source>路径为空</source><translation>パスが空です</translation></message>
+<message><source>文件不存在</source><translation>ファイルが存在しません</translation></message>
+<message><source>Microsoft Store 应用执行别名（不可用）</source><translation>Microsoft Store のアプリ実行エイリアス（使用不可）</translation></message>
+<message><source>重解析点占位文件（不可用）</source><translation>再解析ポイントのプレースホルダーファイル（使用不可）</translation></message>
+<message><source>0 字节占位文件（不可用）</source><translation>0 バイトのプレースホルダーファイル（使用不可）</translation></message>
+<message><source>来自注册表</source><translation>レジストリから</translation></message>
+<message><source>来自 PATH</source><translation>PATH から</translation></message>
+<message><source>常见安装目录</source><translation>一般的なインストール先</translation></message>
+<message><source>用户安装目录</source><translation>ユーザーインストール先</translation></message>
+<message><source>来自 py 启动器</source><translation>py ランチャーから</translation></message>
+<message><source>无法启动该解释器。</source><translation>このインタープリターを起動できませんでした。</translation></message>
+<message><source>解释器在 %1 秒内没有响应（已终止）。</source><translation>インタープリターが %1 秒以内に応答しませんでした（終了しました）。</translation></message>
+<message><source>解释器返回异常（exit=%1）。</source><translation>インタープリターが異常終了しました（exit=%1）。</translation></message>
+</context>
+<context><name>PythonPack</name>
+<message><source>图标文件过小。</source><translation>アイコンファイルが小さすぎます。</translation></message>
+<message><source>不是有效的 .ico 文件。</source><translation>有効な .ico ファイルではありません。</translation></message>
+<message><source>.ico 内没有可用图像。</source><translation>.ico 内に使用可能な画像がありません。</translation></message>
+<message><source>解释器目录不存在：%1</source><translation>インタープリターのディレクトリが存在しません：%1</translation></message>
+<message><source>未找到 tcl 目录，tkinter 界面可能无法启动。</source><translation>tcl ディレクトリが見つかりません。tkinter の画面が起動しない可能性があります。</translation></message>
+<message><source>已跳过 Lib/site-packages（第三方依赖）；如需随包请勾选「包含 site-packages」。</source><translation>Lib/site-packages（サードパーティ依存関係）をスキップしました。同梱するには「site-packages を含める」をオンにしてください。</translation></message>
+<message><source>缺少启动器 %1（应与 ESPackager.exe 位于同一目录）。</source><translation>ランチャー %1 がありません（ESPackager.exe と同じディレクトリに置く必要があります）。</translation></message>
+<message><source>无法创建临时目录：%1</source><translation>一時ディレクトリを作成できませんでした：%1</translation></message>
+<message><source>复制启动器失败：%1</source><translation>ランチャーのコピーに失敗しました：%1</translation></message>
+<message><source>图标替换失败（已使用默认图标）：%1</source><translation>アイコンの置き換えに失敗しました（既定のアイコンを使用）：%1</translation></message>
+<message><source>解释器目录中没有 python3XX.dll：%1</source><translation>インタープリターのディレクトリに python3XX.dll がありません：%1</translation></message>
+<message><source>无法写入 launch.ini：%1</source><translation>launch.ini に書き込めませんでした：%1</translation></message>
+<message><source>无法读取图标：%1</source><translation>アイコンを読み込めませんでした：%1</translation></message>
+<message><source>无法打开可执行文件以替换图标（错误码 %1）。</source><translation>アイコンを置き換えるために実行ファイルを開けませんでした（エラーコード %1）。</translation></message>
+<message><source>写入图标资源失败（错误码 %1）。</source><translation>アイコンリソースの書き込みに失敗しました（エラーコード %1）。</translation></message>
+</context>
+<context><name>PythonPanel</name>
+<message><source>打包为 Python 应用（随包携带解释器，目标机无需安装 Python）</source><translation>Python アプリとしてパッケージ（インタープリターを同梱するため、配布先に Python は不要）</translation></message>
+<message><source>未探测</source><translation>未検出</translation></message>
+<message><source>Python 解释器</source><translation>Python インタープリター</translation></message>
+<message><source>重新探测</source><translation>再検出</translation></message>
+<message><source>浏览…</source><translation>参照…</translation></message>
+<message><source>入口脚本</source><translation>エントリースクリプト</translation></message>
+<message><source>相对源目录，例如 main.py（项目文件会安装到 app\ 子目录）</source><translation>ソースディレクトリからの相対パス、例：main.py（プロジェクトファイルは app\ サブディレクトリにインストールされます）</translation></message>
+<message><source>选择…</source><translation>選択…</translation></message>
+<message><source>附加参数</source><translation>追加引数</translation></message>
+<message><source>可选，例如 --config config.json</source><translation>任意、例：--config config.json</translation></message>
+<message><source>显示控制台窗口</source><translation>コンソールウィンドウを表示</translation></message>
+<message><source>包含 site-packages（第三方依赖）</source><translation>site-packages を含める（サードパーティ依存関係）</translation></message>
+<message><source>应用图标</source><translation>アプリのアイコン</translation></message>
+<message><source>可选 .ico，用作 exe / 快捷方式图标</source><translation>任意の .ico、exe / ショートカットのアイコンとして使用</translation></message>
+<message><source>清除</source><translation>クリア</translation></message>
+<message><source>正在后台探测已安装的 Python…</source><translation>インストール済みの Python をバックグラウンドで検出しています…</translation></message>
+<message><source>版本未知</source><translation>バージョン不明</translation></message>
+<message><source>未找到可用的 Python 解释器（已跳过 Store 别名与占位文件）。</source><translation>使用可能な Python インタープリターが見つかりません（Store のエイリアスとプレースホルダーファイルは除外）。</translation></message>
+<message><source>找到 %1 个可用解释器%2。</source><translation>使用可能なインタープリターが %1 個見つかりました%2。</translation></message>
+<message><source>（另有 %1 个不可用，已标注）</source><translation>（他に使用不可が %1 個、印あり）</translation></message>
+<message><source>请选择有效的 Python 解释器。</source><translation>有効な Python インタープリターを選択してください。</translation></message>
+<message><source>随包携带 %1 个运行时文件，约 %2 MB（安装后占用相同空间）。</source><translation>ランタイムファイル %1 個（約 %2 MB）を同梱します（インストール後も同じ容量を使用）。</translation></message>
+<message><source>选择 python.exe</source><translation>python.exe を選択</translation></message>
+<message><source>该文件不可用：%1</source><translation>このファイルは使用できません：%1</translation></message>
+<message><source>手动选择</source><translation>手動で選択</translation></message>
+<message><source>目录内未找到 python3XX.dll</source><translation>ディレクトリ内に python3XX.dll が見つかりません</translation></message>
+<message><source>选择入口脚本</source><translation>エントリースクリプトを選択</translation></message>
+<message><source>选择应用图标</source><translation>アプリのアイコンを選択</translation></message>
+<message><source>请先选择有效的源目录。</source><translation>先に有効なソースディレクトリを選択してください。</translation></message>
+<message><source>请选择可用的 Python 解释器（可点「重新探测」）。</source><translation>使用可能な Python インタープリターを選択してください（「再検出」をクリックできます）。</translation></message>
+<message><source>所选解释器不可用：%1</source><translation>選択したインタープリターは使用できません：%1</translation></message>
+<message><source>解释器目录内未找到 python3XX.dll：%1</source><translation>インタープリターのディレクトリ内に python3XX.dll が見つかりません：%1</translation></message>
+<message><source>请填写入口脚本（例如 main.py）。</source><translation>エントリースクリプトを入力してください（例：main.py）。</translation></message>
+<message><source>找不到入口脚本：%1</source><translation>エントリースクリプトが見つかりません：%1</translation></message>
+<message><source>找不到图标文件：%1</source><translation>アイコンファイルが見つかりません：%1</translation></message>
 </context>
 </TS>

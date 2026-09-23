@@ -52,7 +52,8 @@ void collectDirEntries(const QString &dir, QVector<ZipEntry> *entries, QString *
 
 QByteArray zipDirectory(const QString &dir,
                         const std::function<void(int, int)> &progress,
-                        QString *error)
+                        QString *error,
+                        const QString &prefix)
 {
     QVector<ZipEntry> entries;
     collectDirEntries(dir, &entries, error);
@@ -74,11 +75,12 @@ QByteArray zipDirectory(const QString &dir,
     bool ok = true;
     for (const ZipEntry &e : entries) {
         const QString absPath = QDir(dir).filePath(QString(e.name).replace('/', QDir::separator()));
+        const QString arcName = prefix + e.name;
         if (e.isDir) {
-            if (!mz_zip_writer_add_mem(&zip, qPrintable(e.name + '/'), nullptr, 0,
+            if (!mz_zip_writer_add_mem(&zip, qPrintable(arcName + '/'), nullptr, 0,
                                        MZ_BEST_COMPRESSION)) {
                 ok = false;
-                if (error) *error = tr_("写入目录条目失败：%1").arg(e.name);
+                if (error) *error = tr_("写入目录条目失败：%1").arg(arcName);
                 break;
             }
         } else {
@@ -90,10 +92,10 @@ QByteArray zipDirectory(const QString &dir,
             }
             const QByteArray data = f.readAll();
             f.close();
-            if (!mz_zip_writer_add_mem(&zip, qPrintable(e.name), data.constData(), data.size(),
+            if (!mz_zip_writer_add_mem(&zip, qPrintable(arcName), data.constData(), data.size(),
                                        MZ_BEST_COMPRESSION)) {
                 ok = false;
-                if (error) *error = tr_("压缩文件失败：%1").arg(e.name);
+                if (error) *error = tr_("压缩文件失败：%1").arg(arcName);
                 break;
             }
             fileDone++;
@@ -121,7 +123,8 @@ QByteArray zipDirectoryWithExtras(
     const QString &dir,
     const QVector<QPair<QString, QString>> &extraFiles,
     const std::function<void(int, int)> &progress,
-    QString *error)
+    QString *error,
+    const QString &prefix)
 {
     QVector<ZipEntry> entries;
     collectDirEntries(dir, &entries, error);
@@ -171,15 +174,16 @@ QByteArray zipDirectoryWithExtras(
 
     for (const ZipEntry &e : entries) {
         const QString absPath = QDir(dir).filePath(QString(e.name).replace('/', QDir::separator()));
+        const QString arcName = prefix + e.name;
         if (e.isDir) {
-            if (!mz_zip_writer_add_mem(&zip, qPrintable(e.name + '/'), nullptr, 0,
+            if (!mz_zip_writer_add_mem(&zip, qPrintable(arcName + '/'), nullptr, 0,
                                        MZ_BEST_COMPRESSION)) {
                 ok = false;
-                if (error) *error = tr_("写入目录条目失败：%1").arg(e.name);
+                if (error) *error = tr_("写入目录条目失败：%1").arg(arcName);
                 break;
             }
         } else {
-            addFile(e.name, absPath);
+            addFile(arcName, absPath);
             if (!ok) break;
         }
     }
@@ -290,7 +294,8 @@ bool extractEntryToMem(const QByteArray &zipData, const QString &entryName,
 bool unzipToDir(const QByteArray &zipData, const QString &destDir,
                 const QString &extractPrefix,
                 const std::function<void(int, int)> &progress,
-                QString *error)
+                QString *error,
+                const QString &excludePrefix)
 {
     QVector<ZipEntry> entries;
     if (!listZipEntries(zipData, &entries, error))
@@ -303,6 +308,8 @@ bool unzipToDir(const QByteArray &zipData, const QString &destDir,
             if (!e.name.startsWith(extractPrefix))
                 continue;
         }
+        if (!excludePrefix.isEmpty() && e.name.startsWith(excludePrefix))
+            continue;
         wanted.append(&e);
         if (!e.isDir) fileTotal++;
     }

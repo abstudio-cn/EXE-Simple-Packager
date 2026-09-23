@@ -2,6 +2,8 @@
 // InstallCore — 安装核心（对应 ProgramReg 的 InstallHelper.cs）：
 // 解压负载 → 生成 uninstall.ini → 注册表卸载项 → 快捷方式 → 任务栏固定
 
+#include "ThemeSpec.h"
+
 #include <QString>
 #include <QStringList>
 #include <functional>
@@ -19,6 +21,7 @@ struct InstallOptions
     bool startMenuShortcut = true;
     bool desktopShortcut = false;
     bool taskbarShortcut = false;
+    ThemeStyle uninstallTheme;   // 卸载器自定义外观（配色写入 uninstall.ini，背景图落盘到安装目录）
 };
 
 // 执行安装。zipData 为负载 ZIP。log 回调逐条报告；progress 回调报百分比（0-100）。返回失败数。

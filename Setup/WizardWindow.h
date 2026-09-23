@@ -14,6 +14,7 @@ class QRadioButton;
 class QCheckBox;
 class QStackedWidget;
 class QLabel;
+class QTimer;
 
 namespace esp {
 class ModernWindow;
@@ -61,6 +62,7 @@ private slots:
     void goBack();
     void cancel();
     void browseInstallDir();
+    void flushLog();
 
 private:
     void setPage(int index);
@@ -68,6 +70,7 @@ private:
     void startInstall();
     void onInstallDone(int failures, const QStringList &warnings);
     void onInstallFailed(const QString &error);
+    void appendLog(const QString &line);
 
     esp::ModernWindow *win_ = nullptr;
     esp::PkgMeta meta_;
@@ -95,6 +98,9 @@ private:
     QPushButton *cancelBtn_ = nullptr;
 
     InstallTask *task_ = nullptr;
+    // 安装日志量大：累积后按时间批量刷新，避免逐条重绘导致界面"未响应"
+    QTimer *logTimer_ = nullptr;
+    QStringList pendingLog_;
     bool installing_ = false;
     bool installFailed_ = false;
     int installFailures_ = 0;

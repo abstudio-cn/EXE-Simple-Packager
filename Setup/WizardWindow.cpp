@@ -27,6 +27,7 @@
 #include <QStorageInfo>
 #include <QPainter>
 #include <QStyle>
+#include <QTimer>
 
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
@@ -182,6 +183,8 @@ WizardWindow::WizardWindow(const PkgMeta &meta, QWidget *parent)
         mainIcon_ = appPixmap(64);
     win_->setTitleBarIcon(mainIcon_);
     win_->setWindowIcon(QIcon(mainIcon_));
+    // 应用封包内携带的自定义外观（配色 + 背景图）
+    win_->applyTheme(meta.theme.installer);
 
     const QStringList steps = {
         tr("欢迎"),
@@ -247,9 +250,7 @@ WizardWindow::WizardWindow(const PkgMeta &meta, QWidget *parent)
     p1->addWidget(d1);
     auto *textEdit = new QTextEdit(page1);
     textEdit->setReadOnly(true);
-    textEdit->setStyleSheet(QStringLiteral(
-        "QTextEdit { background: #FBFCFE; border: 1px solid #E3E8F2; border-radius: 8px;"
-        " padding: 10px; font-size: 12px; color: #3A4356; }"));
+    textEdit->setProperty("role", "license");
     textEdit->setPlainText(tr(
         "软件许可协议\n\n"
         "版权所有 (C) %1 %2\n\n"
@@ -321,7 +322,7 @@ WizardWindow::WizardWindow(const PkgMeta &meta, QWidget *parent)
     ccl->addWidget(desktopChk_);
     taskbarChk_ = new QCheckBox(tr("固定到任务栏"), chkCard);
     ccl->addWidget(taskbarChk_);
-    chkCard->setStyleSheet(QStringLiteral("QWidget { background: #FBFCFE; border: 1px solid #E3E8F2; border-radius: 10px; }"));
+    chkCard->setProperty("role", "fieldCard");
     p2->addWidget(chkCard);
 
     auto *d2 = new QLabel(tr("单击「安装」开始安装；可单击「上一步」返回修改设置。"), page2);
@@ -386,7 +387,7 @@ WizardWindow::WizardWindow(const PkgMeta &meta, QWidget *parent)
     auto *btnBar = new QWidget(content);
     // 用 ID 选择器限定范围，避免 QWidget 规则级联覆盖按钮自身的应用级样式
     btnBar->setObjectName(QStringLiteral("btnBar"));
-    btnBar->setStyleSheet(QStringLiteral("QWidget#btnBar { background: #FAFBFE; border-top: 1px solid #ECF0F7; }"));
+    btnBar->setStyleSheet(bottomBarStyle(meta.theme.installer));
     auto *blay = new QHBoxLayout(btnBar);
     blay->setContentsMargins(24, 14, 24, 14);
     blay->setSpacing(10);
@@ -415,8 +416,29 @@ WizardWindow::WizardWindow(const PkgMeta &meta, QWidget *parent)
     win_->setContent(content);
     win_->setFixedClientSize(960, 560);
 
+    // 安装日志量大：累积后按时间批量刷新，避免逐条重绘造成界面“未响应”
+    logTimer_ = new QTimer(this);
+    logTimer_->setInterval(120);
+    connect(logTimer_, &QTimer::timeout, this, &WizardWindow::flushLog);
+
     highlightStep(stepLabels, 0);
     setPage(0);
+}
+
+void WizardWindow::appendLog(const QString &line)
+{
+    pendingLog_.append(line);
+    // 单次缓冲过大时立即刷新，避免日志延后显示
+    if (pendingLog_.size() >= 80)
+        flushLog();
+}
+
+void WizardWindow::flushLog()
+{
+    if (pendingLog_.isEmpty())
+        return;
+    logView_->appendPlainText(pendingLog_.join(QLatin1Char('\n')));
+    pendingLog_.clear();
 }
 
 void WizardWindow::show()
@@ -521,6 +543,8 @@ void WizardWindow::startInstall()
     installWarnings_.clear();
     win_->setClosable(false);
     logView_->clear();
+    pendingLog_.clear();
+    logTimer_->start();
     progress_->setValue(0);
     setPage(3);
 
@@ -528,7 +552,7 @@ void WizardWindow::startInstall()
                             startMenuChk_->isChecked(), desktopChk_->isChecked(),
                             taskbarChk_->isChecked(), meta_, this);
     connect(task_, &InstallTask::progress, this, [this](int p) { progress_->setValue(p); });
-    connect(task_, &InstallTask::logLine, this, [this](const QString &l) { logView_->appendPlainText(l); });
+    connect(task_, &InstallTask::logLine, this, &WizardWindow::appendLog);
     connect(task_, &InstallTask::done, this, &WizardWindow::onInstallDone);
     connect(task_, &InstallTask::failed, this, &WizardWindow::onInstallFailed);
     task_->start();
@@ -537,11 +561,14 @@ void WizardWindow::startInstall()
 void WizardWindow::onInstallDone(int failures, const QStringList &warnings)
 {
     installing_ = false;
+    logTimer_->stop();
+    flushLog();
     win_->setClosable(true);
     installFailures_ = failures;
     installWarnings_ = warnings;
     installFailed_ = (failures > 0);
     if (task_) {
+        task_->wait();   // 确保线程退出后再销毁，避免 QThread 运行中析构触发 abort
         task_->deleteLater();
         task_ = nullptr;
     }
@@ -579,9 +606,12 @@ void WizardWindow::onInstallDone(int failures, const QStringList &warnings)
 void WizardWindow::onInstallFailed(const QString &error)
 {
     installing_ = false;
+    logTimer_->stop();
+    flushLog();
     win_->setClosable(true);
     installFailed_ = true;
     if (task_) {
+        task_->wait();
         task_->deleteLater();
         task_ = nullptr;
     }

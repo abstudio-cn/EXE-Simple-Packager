@@ -134,8 +134,8 @@ void UninstallTask::run()
 // UninstallWindow
 // =====================================================================
 
-UninstallWindow::UninstallWindow(const QString &iniPath, QWidget *parent)
-    : QWidget(parent), iniPath_(iniPath)
+UninstallWindow::UninstallWindow(const QString &iniPath, const ThemeStyle &theme, QWidget *parent)
+    : QWidget(parent), iniPath_(iniPath), theme_(theme)
 {
     IniFile ini(iniPath);
     appName_ = ini.get(QStringLiteral("AppInfo"), QStringLiteral("AppName"),
@@ -144,6 +144,7 @@ UninstallWindow::UninstallWindow(const QString &iniPath, QWidget *parent)
                           QCoreApplication::applicationDirPath());
 
     win_ = new ModernWindow(tr("卸载 · %1").arg(appName_), QSize(880, 560), nullptr, this);
+    win_->applyTheme(theme_);   // 安装时保存的卸载器外观（配色 + 背景图）
     connect(win_, &ModernWindow::closeClicked, this, [this] {
         if (working_) {
             QMessageBox::information(win_, tr("卸载程序"),
@@ -251,7 +252,7 @@ UninstallWindow::UninstallWindow(const QString &iniPath, QWidget *parent)
     auto *btnBar = new QWidget(content);
     // 用 ID 选择器限定范围，避免 QWidget 规则级联覆盖按钮自身的应用级样式
     btnBar->setObjectName(QStringLiteral("btnBar"));
-    btnBar->setStyleSheet(QStringLiteral("QWidget#btnBar { background: #FAFBFE; border-top: 1px solid #ECF0F7; }"));
+    btnBar->setStyleSheet(bottomBarStyle(theme_));
     auto *blay = new QHBoxLayout(btnBar);
     blay->setContentsMargins(24, 14, 24, 14);
     blay->setSpacing(10);
@@ -328,6 +329,7 @@ void UninstallWindow::onDone(int failures, const QStringList &manualCleanup)
     failures_ = failures;
     manualCleanup_ = manualCleanup;
     if (task_) {
+        task_->wait();   // 线程退出后再销毁，避免 QThread 运行中析构触发 abort
         task_->deleteLater();
         task_ = nullptr;
     }
@@ -352,6 +354,7 @@ void UninstallWindow::onFailed(const QString &error)
     working_ = false;
     win_->setClosable(true);
     if (task_) {
+        task_->wait();
         task_->deleteLater();
         task_ = nullptr;
     }

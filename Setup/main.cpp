@@ -19,6 +19,10 @@ using namespace esp;
 namespace {
 void attachParentConsole()
 {
+    // 已被重定向（管道/文件）时沿用现有句柄，否则输出会被丢回控制台
+    const HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
+    if (out && out != INVALID_HANDLE_VALUE)
+        return;
     if (AttachConsole(ATTACH_PARENT_PROCESS)) {
         freopen("CONOUT$", "w", stdout);
         freopen("CONOUT$", "w", stderr);
@@ -26,7 +30,7 @@ void attachParentConsole()
 }
 
 // 静默安装：/quiet /dir=... /agree [/startmenu=0|1] [/desktop=0|1] [/taskbar=0|1]
-int quietInstall(const QStringList &args)
+int quietInstall(const QStringList &args, const PkgMeta &meta)
 {
     attachParentConsole();
     const QString logPath = QDir::temp().filePath(QStringLiteral("ESPSetup.log"));
@@ -62,13 +66,8 @@ int quietInstall(const QStringList &args)
         return 2;
     }
 
-    PkgMeta meta;
-    QString err;
-    if (!readPkgMeta(QApplication::applicationFilePath(), &meta, &err)) {
-        emitLine(QStringLiteral("FAIL ") + err);
-        return 3;
-    }
     QByteArray zip;
+    QString err;
     if (!readPayload(QApplication::applicationFilePath(), &zip, &err)) {
         emitLine(QStringLiteral("FAIL ") + err);
         return 3;
@@ -84,6 +83,7 @@ int quietInstall(const QStringList &args)
     o.startMenuShortcut = startMenu;
     o.desktopShortcut = desktop;
     o.taskbarShortcut = taskbar;
+    o.uninstallTheme = meta.theme.uninstaller;   // 卸载器外观随包携带
 
     QStringList warnings;
     const int failures = runInstall(zip, o, emitLine, nullptr, &warnings);
@@ -98,7 +98,6 @@ int quietInstall(const QStringList &args)
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    app.setStyleSheet(globalStyleSheet());
     app.setWindowIcon(appIcon(32));
     installTranslations(app);
 
@@ -106,18 +105,31 @@ int main(int argc, char *argv[])
     app.setFont(f);
 
     const QStringList args = app.arguments().mid(1);
+    bool quiet = false;
     for (const QString &a : args) {
         if (a.compare(QLatin1String("/quiet"), Qt::CaseInsensitive) == 0
             || a.compare(QLatin1String("/s"), Qt::CaseInsensitive) == 0)
-            return quietInstall(args);
+            quiet = true;
     }
 
+    // 封包元数据 + 主题（背景图存在独立主题块，只读这一小段，不加载 ZIP，启动很快）
     PkgMeta meta;
     QString err;
     if (!readPkgMeta(QApplication::applicationFilePath(), &meta, &err)) {
+        app.setStyleSheet(globalStyleSheet(ThemeStyle()));
         QMessageBox::critical(nullptr, QCoreApplication::translate("WizardWindow", "安装向导"), err);
         return 1;
     }
+    if (!readThemeImages(QApplication::applicationFilePath(), &meta, &err)) {
+        // 主题块损坏不应阻断安装：记录并回退默认外观
+        qWarning("读取主题块失败：%s", qPrintable(err));
+    }
+
+    // 按封包内携带的主题渲染安装器
+    app.setStyleSheet(globalStyleSheet(meta.theme.installer));
+
+    if (quiet)
+        return quietInstall(args, meta);
 
     WizardWindow w(meta);
     w.show();

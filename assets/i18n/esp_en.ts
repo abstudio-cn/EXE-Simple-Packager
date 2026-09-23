@@ -48,6 +48,17 @@ Size: %2 KB</translation></message>
 %1</source><translation>Packaging failed:
 %1</translation></message>
 <message><source>[提示] 源目录含多个 exe（%1），已默认选择 %2，可手动更改。</source><translation>[Note] The source directory contains multiple exe files (%1). %2 selected by default; you can change it manually.</translation></message>
+<message><source>[警告] 未知的主题预设：%1</source><translation>[Warning] Unknown theme preset: %1</translation></message>
+<message><source>[警告] 颜色格式非法（应为 #RRGGBB）：%1</source><translation>[Warning] Invalid color format (#RRGGBB expected): %1</translation></message>
+<message><source>[错误] </source><translation>[Error] </translation></message>
+<message><source>[错误] /auto 模式需要 /dir 与 /out 参数。</source><translation>[Error] /auto mode requires the /dir and /out arguments.</translation></message>
+<message><source>卸载器主题</source><translation>Uninstaller Theme</translation></message>
+<message><source>安装器主题</source><translation>Installer Theme</translation></message>
+<message><source>已载入背景图 %1（%2×%3，%4 KB）。</source><translation>Background image %1 loaded (%2×%3, %4 KB).</translation></message>
+<message><source>自定义安装器 / 卸载器的配色与背景图，右侧为实时预览</source><translation>Customize the installer / uninstaller colors and background image; live preview on the right</translation></message>
+<message><source>Python 打包</source><translation>Python Packaging</translation></message>
+<message><source>Python 应用：入口为打包生成的 &lt;应用名&gt;.exe（随包启动器）</source><translation>Python app: the entry point is the generated &lt;app name&gt;.exe (bundled launcher)</translation></message>
+<message><source>[提示] </source><translation>[Note] </translation></message>
 </context>
 <context><name>PackTask</name>
 <message><source>[错误] 缺少卸载器：%1（请确认 ESPUninstall.exe 与 ESPSetup.exe 位于同一目录）</source><translation>[Error] Uninstaller missing: %1 (make sure ESPUninstall.exe and ESPSetup.exe are in the same directory)</translation></message>
@@ -60,6 +71,18 @@ Size: %2 KB</translation></message>
 <message><source>安装包生成完成，大小 %1 KB。</source><translation>Installer generated, size %1 KB.</translation></message>
 <message><source>已提取主程序图标（%1 字节），随封包内嵌。</source><translation>Main program icon extracted (%1 bytes) and embedded in the package.</translation></message>
 <message><source>[警告] 未能提取主程序图标：%1，安装器将使用默认图标。</source><translation>[Warning] Could not extract the main program icon: %1. The installer will use the default icon.</translation></message>
+<message><source>卸载器背景图 %1 KB（%2，不透明度 %3%）。</source><translation>Uninstaller background image %1 KB (%2, opacity %3%).</translation></message>
+<message><source>安装器主色 %1 / 副色 %2；卸载器主色 %3 / 副色 %4。</source><translation>Installer primary %1 / secondary %2; uninstaller primary %3 / secondary %4.</translation></message>
+<message><source>安装器背景图 %1 KB（%2，不透明度 %3%）。</source><translation>Installer background image %1 KB (%2, opacity %3%).</translation></message>
+<message><source>[错误] 无法创建临时目录。</source><translation>[Error] Could not create the temporary directory.</translation></message>
+<message><source>无法创建临时目录</source><translation>Could not create the temporary directory</translation></message>
+<message><source>Python 模式：解释器 %1</source><translation>Python mode: interpreter %1</translation></message>
+<message><source>[警告] </source><translation>[Warning] </translation></message>
+<message><source>已生成启动器 %1（%2 子系统）。</source><translation>Launcher %1 generated (%2 subsystem).</translation></message>
+<message><source>未能收集 Python 运行时文件：%1</source><translation>Could not collect the Python runtime files: %1</translation></message>
+<message><source>随包携带 Python 运行时：%1 个文件，%2 MB。</source><translation>Bundling Python runtime: %1 files, %2 MB.</translation></message>
+<message><source>[提示] </source><translation>[Note] </translation></message>
+<message><source>项目文件将安装到 app\ 子目录，入口脚本 %1</source><translation>Project files will be installed into the app\ subdirectory; entry script %1</translation></message>
 </context>
 <context><name>WizardWindow</name>
 <message><source>安装向导 · %1</source><translation>Setup Wizard · %1</translation></message>
@@ -120,6 +143,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 %3</translation></message>
 <message><source>%1 已成功安装到您的计算机。</source><translation>%1 has been installed on your computer.</translation></message>
 <message><source>安装失败</source><translation>Installation Failed</translation></message>
+<message><source>浏览…</source><translation>Browse...</translation></message>
 </context>
 <context><name>UninstallWindow</name>
 <message><source>卸载 · %1</source><translation>Uninstall · %1</translation></message>
@@ -165,6 +189,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <message><source>已固定到任务栏。</source><translation>Pinned to taskbar.</translation></message>
 <message><source>安装完成。</source><translation>Installation completed.</translation></message>
 <message><source>安装流程结束，有 %1 个步骤未成功。</source><translation>Installation finished with %1 step(s) failed.</translation></message>
+<message><source>写入卸载器主题背景图失败，卸载器将使用纯色主题。</source><translation>Failed to write the uninstaller theme background image; the uninstaller will use a solid-color theme.</translation></message>
+<message><source>已写入卸载器主题背景图（%1 KB）。</source><translation>Uninstaller theme background image written (%1 KB).</translation></message>
 </context>
 <context><name>UninstallRunner</name>
 <message><source>未知程序</source><translation>Unknown program</translation></message>
@@ -220,6 +246,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <message><source>读取负载数据不完整。</source><translation>Incomplete payload data.</translation></message>
 <message><source>无法打开安装器存根：%1</source><translation>Cannot open installer stub: %1</translation></message>
 <message><source>无法创建输出文件：%1</source><translation>Cannot create output file: %1</translation></message>
+<message><source>主题块损坏（标记缺失）。</source><translation>Theme block is corrupt (marker missing).</translation></message>
+<message><source>主题块长度非法。</source><translation>Invalid theme block length.</translation></message>
+<message><source>定位主题块失败。</source><translation>Failed to locate the theme block.</translation></message>
+<message><source>封包索引中的主题块范围非法（文件可能被截断）。</source><translation>Invalid theme block range in the package index (the file may be truncated).</translation></message>
+<message><source>读取卸载器背景图失败。</source><translation>Failed to read the uninstaller background image.</translation></message>
+<message><source>读取安装器背景图失败。</source><translation>Failed to read the installer background image.</translation></message>
 </context>
 <context><name>ZipHelper</name>
 <message><source>目录不存在：%1</source><translation>Directory does not exist: %1</translation></message>
@@ -243,5 +275,132 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <message><source>创建注册表键失败 %1：</source><translation>Failed to create registry key %1: </translation></message>
 <message><source>写入注册表值失败 %1\%2：</source><translation>Failed to write registry value %1\%2: </translation></message>
 <message><source>删除注册表键失败 %1：</source><translation>Failed to delete registry key %1: </translation></message>
+</context>
+<context><name>ThemeEditor</name>
+<message><source>%1（%2×%3，%4 KB）</source><translation>%1 (%2×%3, %4 KB)</translation></message>
+<message><source>上一步</source><translation>Back</translation></message>
+<message><source>不透明度</source><translation>Opacity</translation></message>
+<message><source>主色</source><translation>Primary</translation></message>
+<message><source>侧栏主色</source><translation>Sidebar primary</translation></message>
+<message><source>侧栏副色</source><translation>Sidebar secondary</translation></message>
+<message><source>副色</source><translation>Secondary</translation></message>
+<message><source>卸载</source><translation>Uninstall</translation></message>
+<message><source>卸载 · %1</source><translation>Uninstall · %1</translation></message>
+<message><source>卸载向导</source><translation>Uninstall Wizard</translation></message>
+<message><source>取消</source><translation>Cancel</translation></message>
+<message><source>图片文件 (*.png *.jpg *.jpeg *.bmp *.webp *.gif);;所有文件 (*.*)</source><translation>Image Files (*.png *.jpg *.jpeg *.bmp *.webp *.gif);;All Files (*.*)</translation></message>
+<message><source>填充方式</source><translation>Fit Mode</translation></message>
+<message><source>安装</source><translation>Install</translation></message>
+<message><source>安装向导</source><translation>Setup Wizard</translation></message>
+<message><source>安装向导 · %1</source><translation>Setup Wizard · %1</translation></message>
+<message><source>安装完成</source><translation>Completed</translation></message>
+<message><source>安装选项</source><translation>Installation Options</translation></message>
+<message><source>完成</source><translation>Finish</translation></message>
+<message><source>居中</source><translation>Center</translation></message>
+<message><source>已选择</source><translation>Selected</translation></message>
+<message><source>平铺</source><translation>Tile</translation></message>
+<message><source>拉伸</source><translation>Stretch</translation></message>
+<message><source>效果预览</source><translation>Preview</translation></message>
+<message><source>未选择</source><translation>Not selected</translation></message>
+<message><source>欢迎</source><translation>Welcome</translation></message>
+<message><source>正在卸载</source><translation>Uninstalling</translation></message>
+<message><source>正在安装</source><translation>Installing</translation></message>
+<message><source>正在读取图片…</source><translation>Reading image...</translation></message>
+<message><source>清除</source><translation>Clear</translation></message>
+<message><source>点击选择颜色</source><translation>Click to choose a color</translation></message>
+<message><source>确认卸载</source><translation>Confirm Uninstall</translation></message>
+<message><source>示例程序</source><translation>Sample App</translation></message>
+<message><source>背景图片</source><translation>Background Image</translation></message>
+<message><source>自定义</source><translation>Custom</translation></message>
+<message><source>许可协议</source><translation>License Agreement</translation></message>
+<message><source>读取失败</source><translation>Read failed</translation></message>
+<message><source>适应（留边）</source><translation>Fit (letterbox)</translation></message>
+<message><source>选择图片…</source><translation>Choose Image...</translation></message>
+<message><source>选择背景图片</source><translation>Select Background Image</translation></message>
+<message><source>铺满（裁剪）</source><translation>Fill (crop)</translation></message>
+<message><source>预设配色</source><translation>Color Preset</translation></message>
+</context>
+<context><name>ThemeSpec</name>
+<message><source>品红</source><translation>Magenta</translation></message>
+<message><source>图片编码失败：%1</source><translation>Failed to encode image: %1</translation></message>
+<message><source>图片解码失败：%1（%2）</source><translation>Failed to decode image: %1 (%2)</translation></message>
+<message><source>无法读取图片：%1（%2）</source><translation>Cannot read image: %1 (%2)</translation></message>
+<message><source>深海蓝</source><translation>Deep Blue</translation></message>
+<message><source>玫瑰红</source><translation>Rose</translation></message>
+<message><source>石墨灰</source><translation>Graphite</translation></message>
+<message><source>经典蓝紫</source><translation>Classic Blue-Purple</translation></message>
+<message><source>翠绿</source><translation>Emerald</translation></message>
+<message><source>落日橙</source><translation>Sunset Orange</translation></message>
+<message><source>青色</source><translation>Teal</translation></message>
+</context>
+<context><name>PythonEnv</name>
+<message><source>目录内未找到 python3XX.dll，不是完整的 Python 安装</source><translation>python3XX.dll not found in the directory; not a complete Python installation</translation></message>
+<message><source>路径为空</source><translation>Empty path</translation></message>
+<message><source>文件不存在</source><translation>File does not exist</translation></message>
+<message><source>Microsoft Store 应用执行别名（不可用）</source><translation>Microsoft Store app execution alias (unusable)</translation></message>
+<message><source>重解析点占位文件（不可用）</source><translation>Reparse point placeholder file (unusable)</translation></message>
+<message><source>0 字节占位文件（不可用）</source><translation>0-byte placeholder file (unusable)</translation></message>
+<message><source>来自注册表</source><translation>From registry</translation></message>
+<message><source>来自 PATH</source><translation>From PATH</translation></message>
+<message><source>常见安装目录</source><translation>Common install directory</translation></message>
+<message><source>用户安装目录</source><translation>User install directory</translation></message>
+<message><source>来自 py 启动器</source><translation>From py launcher</translation></message>
+<message><source>无法启动该解释器。</source><translation>Could not start this interpreter.</translation></message>
+<message><source>解释器在 %1 秒内没有响应（已终止）。</source><translation>The interpreter did not respond within %1 seconds (terminated).</translation></message>
+<message><source>解释器返回异常（exit=%1）。</source><translation>The interpreter returned an error (exit=%1).</translation></message>
+</context>
+<context><name>PythonPack</name>
+<message><source>图标文件过小。</source><translation>The icon file is too small.</translation></message>
+<message><source>不是有效的 .ico 文件。</source><translation>Not a valid .ico file.</translation></message>
+<message><source>.ico 内没有可用图像。</source><translation>No usable image in the .ico file.</translation></message>
+<message><source>解释器目录不存在：%1</source><translation>Interpreter directory does not exist: %1</translation></message>
+<message><source>未找到 tcl 目录，tkinter 界面可能无法启动。</source><translation>tcl directory not found; tkinter interfaces may not start.</translation></message>
+<message><source>已跳过 Lib/site-packages（第三方依赖）；如需随包请勾选「包含 site-packages」。</source><translation>Skipped Lib/site-packages (third-party dependencies); check "Include site-packages" to bundle them.</translation></message>
+<message><source>缺少启动器 %1（应与 ESPackager.exe 位于同一目录）。</source><translation>Launcher %1 is missing (it should be in the same directory as ESPackager.exe).</translation></message>
+<message><source>无法创建临时目录：%1</source><translation>Could not create the temporary directory: %1</translation></message>
+<message><source>复制启动器失败：%1</source><translation>Failed to copy the launcher: %1</translation></message>
+<message><source>图标替换失败（已使用默认图标）：%1</source><translation>Icon replacement failed (default icon used): %1</translation></message>
+<message><source>解释器目录中没有 python3XX.dll：%1</source><translation>No python3XX.dll in the interpreter directory: %1</translation></message>
+<message><source>无法写入 launch.ini：%1</source><translation>Could not write launch.ini: %1</translation></message>
+<message><source>无法读取图标：%1</source><translation>Could not read the icon: %1</translation></message>
+<message><source>无法打开可执行文件以替换图标（错误码 %1）。</source><translation>Could not open the executable to replace the icon (error code %1).</translation></message>
+<message><source>写入图标资源失败（错误码 %1）。</source><translation>Failed to write the icon resource (error code %1).</translation></message>
+</context>
+<context><name>PythonPanel</name>
+<message><source>打包为 Python 应用（随包携带解释器，目标机无需安装 Python）</source><translation>Package as Python app (bundles the interpreter; no Python needed on the target machine)</translation></message>
+<message><source>未探测</source><translation>Not detected</translation></message>
+<message><source>Python 解释器</source><translation>Python interpreter</translation></message>
+<message><source>重新探测</source><translation>Detect Again</translation></message>
+<message><source>浏览…</source><translation>Browse...</translation></message>
+<message><source>入口脚本</source><translation>Entry script</translation></message>
+<message><source>相对源目录，例如 main.py（项目文件会安装到 app\ 子目录）</source><translation>Relative to the source directory, e.g. main.py (project files are installed into the app\ subdirectory)</translation></message>
+<message><source>选择…</source><translation>Select...</translation></message>
+<message><source>附加参数</source><translation>Extra arguments</translation></message>
+<message><source>可选，例如 --config config.json</source><translation>Optional, e.g. --config config.json</translation></message>
+<message><source>显示控制台窗口</source><translation>Show console window</translation></message>
+<message><source>包含 site-packages（第三方依赖）</source><translation>Include site-packages (third-party dependencies)</translation></message>
+<message><source>应用图标</source><translation>Application icon</translation></message>
+<message><source>可选 .ico，用作 exe / 快捷方式图标</source><translation>Optional .ico used as the exe / shortcut icon</translation></message>
+<message><source>清除</source><translation>Clear</translation></message>
+<message><source>正在后台探测已安装的 Python…</source><translation>Detecting installed Python in the background...</translation></message>
+<message><source>版本未知</source><translation>Unknown version</translation></message>
+<message><source>未找到可用的 Python 解释器（已跳过 Store 别名与占位文件）。</source><translation>No usable Python interpreter found (Store aliases and placeholder files skipped).</translation></message>
+<message><source>找到 %1 个可用解释器%2。</source><translation>Found %1 usable interpreter(s)%2.</translation></message>
+<message><source>（另有 %1 个不可用，已标注）</source><translation> (%1 more unusable, flagged)</translation></message>
+<message><source>请选择有效的 Python 解释器。</source><translation>Please select a valid Python interpreter.</translation></message>
+<message><source>随包携带 %1 个运行时文件，约 %2 MB（安装后占用相同空间）。</source><translation>Bundles %1 runtime files, about %2 MB (same disk usage after installation).</translation></message>
+<message><source>选择 python.exe</source><translation>Select python.exe</translation></message>
+<message><source>该文件不可用：%1</source><translation>This file is unusable: %1</translation></message>
+<message><source>手动选择</source><translation>Selected manually</translation></message>
+<message><source>目录内未找到 python3XX.dll</source><translation>python3XX.dll not found in the directory</translation></message>
+<message><source>选择入口脚本</source><translation>Select Entry Script</translation></message>
+<message><source>选择应用图标</source><translation>Select Application Icon</translation></message>
+<message><source>请先选择有效的源目录。</source><translation>Please select a valid source directory first.</translation></message>
+<message><source>请选择可用的 Python 解释器（可点「重新探测」）。</source><translation>Please select a usable Python interpreter (you can click "Detect Again").</translation></message>
+<message><source>所选解释器不可用：%1</source><translation>The selected interpreter is unusable: %1</translation></message>
+<message><source>解释器目录内未找到 python3XX.dll：%1</source><translation>python3XX.dll not found in the interpreter directory: %1</translation></message>
+<message><source>请填写入口脚本（例如 main.py）。</source><translation>Please enter the entry script (e.g. main.py).</translation></message>
+<message><source>找不到入口脚本：%1</source><translation>Entry script not found: %1</translation></message>
+<message><source>找不到图标文件：%1</source><translation>Icon file not found: %1</translation></message>
 </context>
 </TS>

@@ -48,6 +48,17 @@
 %1</source><translation>패키지 실패:
 %1</translation></message>
 <message><source>[提示] 源目录含多个 exe（%1），已默认选择 %2，可手动更改。</source><translation>[참고] 원본 디렉터리에 exe가 여러 개 있습니다(%1). 기본값 %2 선택, 수동 변경 가능.</translation></message>
+<message><source>[警告] 未知的主题预设：%1</source><translation>[경고] 알 수 없는 테마 프리셋: %1</translation></message>
+<message><source>[警告] 颜色格式非法（应为 #RRGGBB）：%1</source><translation>[경고] 잘못된 색상 형식(#RRGGBB 필요): %1</translation></message>
+<message><source>[错误] </source><translation>[오류] </translation></message>
+<message><source>[错误] /auto 模式需要 /dir 与 /out 参数。</source><translation>[오류] /auto 모드에는 /dir 및 /out 인수가 필요합니다.</translation></message>
+<message><source>卸载器主题</source><translation>제거 프로그램 테마</translation></message>
+<message><source>安装器主题</source><translation>설치 프로그램 테마</translation></message>
+<message><source>已载入背景图 %1（%2×%3，%4 KB）。</source><translation>배경 이미지 %1을(를) 불러왔습니다(%2×%3, %4 KB).</translation></message>
+<message><source>自定义安装器 / 卸载器的配色与背景图，右侧为实时预览</source><translation>설치 프로그램 / 제거 프로그램의 색상과 배경 이미지를 사용자 지정합니다. 오른쪽은 실시간 미리보기입니다.</translation></message>
+<message><source>Python 打包</source><translation>Python 패키징</translation></message>
+<message><source>Python 应用：入口为打包生成的 &lt;应用名&gt;.exe（随包启动器）</source><translation>Python 앱: 진입점은 생성된 &lt;앱 이름&gt;.exe(번들 실행기)입니다</translation></message>
+<message><source>[提示] </source><translation>[참고] </translation></message>
 </context>
 <context><name>PackTask</name>
 <message><source>[错误] 缺少卸载器：%1（请确认 ESPUninstall.exe 与 ESPSetup.exe 位于同一目录）</source><translation>[오류] 제거 프로그램 없음: %1(ESPUninstall.exe와 ESPSetup.exe가 같은 디렉터리에 있는지 확인하세요)</translation></message>
@@ -60,6 +71,18 @@
 <message><source>安装包生成完成，大小 %1 KB。</source><translation>설치 패키지 생성 완료, 크기 %1KB.</translation></message>
 <message><source>已提取主程序图标（%1 字节），随封包内嵌。</source><translation>주 프로그램 아이콘을 추출했습니다(%1바이트). 패키지에 내장합니다.</translation></message>
 <message><source>[警告] 未能提取主程序图标：%1，安装器将使用默认图标。</source><translation>[경고] 주 프로그램 아이콘을 추출하지 못했습니다: %1. 기본 아이콘을 사용합니다.</translation></message>
+<message><source>卸载器背景图 %1 KB（%2，不透明度 %3%）。</source><translation>제거 프로그램 배경 이미지 %1 KB(%2, 불투명도 %3%).</translation></message>
+<message><source>安装器主色 %1 / 副色 %2；卸载器主色 %3 / 副色 %4。</source><translation>설치 프로그램 기본색 %1 / 보조색 %2, 제거 프로그램 기본색 %3 / 보조색 %4.</translation></message>
+<message><source>安装器背景图 %1 KB（%2，不透明度 %3%）。</source><translation>설치 프로그램 배경 이미지 %1 KB(%2, 불투명도 %3%).</translation></message>
+<message><source>[错误] 无法创建临时目录。</source><translation>[오류] 임시 디렉터리를 만들 수 없습니다.</translation></message>
+<message><source>无法创建临时目录</source><translation>임시 디렉터리를 만들 수 없습니다</translation></message>
+<message><source>Python 模式：解释器 %1</source><translation>Python 모드: 인터프리터 %1</translation></message>
+<message><source>[警告] </source><translation>[경고] </translation></message>
+<message><source>已生成启动器 %1（%2 子系统）。</source><translation>실행기 %1 생성됨(%2 하위 시스템).</translation></message>
+<message><source>未能收集 Python 运行时文件：%1</source><translation>Python 런타임 파일을 수집하지 못했습니다: %1</translation></message>
+<message><source>随包携带 Python 运行时：%1 个文件，%2 MB。</source><translation>Python 런타임 번들: %1개 파일, %2 MB.</translation></message>
+<message><source>[提示] </source><translation>[참고] </translation></message>
+<message><source>项目文件将安装到 app\ 子目录，入口脚本 %1</source><translation>프로젝트 파일은 app\ 하위 디렉터리에 설치됩니다. 진입 스크립트 %1</translation></message>
 </context>
 <context><name>WizardWindow</name>
 <message><source>安装向导 · %1</source><translation>설치 마법사 · %1</translation></message>
@@ -120,6 +143,7 @@
 %3</translation></message>
 <message><source>%1 已成功安装到您的计算机。</source><translation>%1이(가) 컴퓨터에 설치되었습니다.</translation></message>
 <message><source>安装失败</source><translation>설치 실패</translation></message>
+<message><source>浏览…</source><translation>찾아보기…</translation></message>
 </context>
 <context><name>UninstallWindow</name>
 <message><source>卸载 · %1</source><translation>제거 · %1</translation></message>
@@ -165,6 +189,8 @@
 <message><source>已固定到任务栏。</source><translation>작업 표시줄에 고정했습니다.</translation></message>
 <message><source>安装完成。</source><translation>설치가 완료되었습니다.</translation></message>
 <message><source>安装流程结束，有 %1 个步骤未成功。</source><translation>설치 프로세스가 종료되었습니다. %1개 단계가 실패했습니다.</translation></message>
+<message><source>写入卸载器主题背景图失败，卸载器将使用纯色主题。</source><translation>제거 프로그램 테마 배경 이미지를 쓰지 못했습니다. 단색 테마를 사용합니다.</translation></message>
+<message><source>已写入卸载器主题背景图（%1 KB）。</source><translation>제거 프로그램 테마 배경 이미지를 작성했습니다(%1 KB).</translation></message>
 </context>
 <context><name>UninstallRunner</name>
 <message><source>未知程序</source><translation>알 수 없는 프로그램</translation></message>
@@ -220,6 +246,12 @@
 <message><source>读取负载数据不完整。</source><translation>페이로드 데이터 읽기가 불완전합니다.</translation></message>
 <message><source>无法打开安装器存根：%1</source><translation>설치 프로그램 스텁을 열 수 없습니다: %1</translation></message>
 <message><source>无法创建输出文件：%1</source><translation>출력 파일을 만들 수 없습니다: %1</translation></message>
+<message><source>主题块损坏（标记缺失）。</source><translation>테마 블록이 손상되었습니다(마커 없음).</translation></message>
+<message><source>主题块长度非法。</source><translation>테마 블록 길이가 잘못되었습니다.</translation></message>
+<message><source>定位主题块失败。</source><translation>테마 블록을 찾지 못했습니다.</translation></message>
+<message><source>封包索引中的主题块范围非法（文件可能被截断）。</source><translation>패키지 인덱스의 테마 블록 범위가 잘못되었습니다(파일이 잘렸을 수 있음).</translation></message>
+<message><source>读取卸载器背景图失败。</source><translation>제거 프로그램 배경 이미지를 읽지 못했습니다.</translation></message>
+<message><source>读取安装器背景图失败。</source><translation>설치 프로그램 배경 이미지를 읽지 못했습니다.</translation></message>
 </context>
 <context><name>ZipHelper</name>
 <message><source>目录不存在：%1</source><translation>디렉터리가 없습니다: %1</translation></message>
@@ -243,5 +275,132 @@
 <message><source>创建注册表键失败 %1：</source><translation>레지스트리 키 생성 실패 %1:</translation></message>
 <message><source>写入注册表值失败 %1\%2：</source><translation>레지스트리 값 쓰기 실패 %1\%2:</translation></message>
 <message><source>删除注册表键失败 %1：</source><translation>레지스트리 키 삭제 실패 %1:</translation></message>
+</context>
+<context><name>ThemeEditor</name>
+<message><source>%1（%2×%3，%4 KB）</source><translation>%1(%2×%3, %4 KB)</translation></message>
+<message><source>上一步</source><translation>이전</translation></message>
+<message><source>不透明度</source><translation>불투명도</translation></message>
+<message><source>主色</source><translation>기본색</translation></message>
+<message><source>侧栏主色</source><translation>사이드바 기본색</translation></message>
+<message><source>侧栏副色</source><translation>사이드바 보조색</translation></message>
+<message><source>副色</source><translation>보조색</translation></message>
+<message><source>卸载</source><translation>제거</translation></message>
+<message><source>卸载 · %1</source><translation>제거 · %1</translation></message>
+<message><source>卸载向导</source><translation>제거 마법사</translation></message>
+<message><source>取消</source><translation>취소</translation></message>
+<message><source>图片文件 (*.png *.jpg *.jpeg *.bmp *.webp *.gif);;所有文件 (*.*)</source><translation>이미지 파일 (*.png *.jpg *.jpeg *.bmp *.webp *.gif);;모든 파일 (*.*)</translation></message>
+<message><source>填充方式</source><translation>채우기 방식</translation></message>
+<message><source>安装</source><translation>설치</translation></message>
+<message><source>安装向导</source><translation>설치 마법사</translation></message>
+<message><source>安装向导 · %1</source><translation>설치 마법사 · %1</translation></message>
+<message><source>安装完成</source><translation>설치 완료</translation></message>
+<message><source>安装选项</source><translation>설치 옵션</translation></message>
+<message><source>完成</source><translation>완료</translation></message>
+<message><source>居中</source><translation>가운데</translation></message>
+<message><source>已选择</source><translation>선택됨</translation></message>
+<message><source>平铺</source><translation>타일</translation></message>
+<message><source>拉伸</source><translation>늘이기</translation></message>
+<message><source>效果预览</source><translation>미리보기</translation></message>
+<message><source>未选择</source><translation>선택 안 함</translation></message>
+<message><source>欢迎</source><translation>환영</translation></message>
+<message><source>正在卸载</source><translation>제거 중</translation></message>
+<message><source>正在安装</source><translation>설치 중</translation></message>
+<message><source>正在读取图片…</source><translation>이미지 읽는 중…</translation></message>
+<message><source>清除</source><translation>지우기</translation></message>
+<message><source>点击选择颜色</source><translation>클릭하여 색상 선택</translation></message>
+<message><source>确认卸载</source><translation>제거 확인</translation></message>
+<message><source>示例程序</source><translation>예제 프로그램</translation></message>
+<message><source>背景图片</source><translation>배경 이미지</translation></message>
+<message><source>自定义</source><translation>사용자 지정</translation></message>
+<message><source>许可协议</source><translation>라이선스 계약</translation></message>
+<message><source>读取失败</source><translation>읽기 실패</translation></message>
+<message><source>适应（留边）</source><translation>맞춤(여백)</translation></message>
+<message><source>选择图片…</source><translation>이미지 선택…</translation></message>
+<message><source>选择背景图片</source><translation>배경 이미지 선택</translation></message>
+<message><source>铺满（裁剪）</source><translation>채우기(자르기)</translation></message>
+<message><source>预设配色</source><translation>색상 프리셋</translation></message>
+</context>
+<context><name>ThemeSpec</name>
+<message><source>品红</source><translation>마젠타</translation></message>
+<message><source>图片编码失败：%1</source><translation>이미지 인코딩 실패: %1</translation></message>
+<message><source>图片解码失败：%1（%2）</source><translation>이미지 디코딩 실패: %1(%2)</translation></message>
+<message><source>无法读取图片：%1（%2）</source><translation>이미지를 읽을 수 없습니다: %1(%2)</translation></message>
+<message><source>深海蓝</source><translation>딥 블루</translation></message>
+<message><source>玫瑰红</source><translation>로즈</translation></message>
+<message><source>石墨灰</source><translation>그래파이트</translation></message>
+<message><source>经典蓝紫</source><translation>클래식 블루 퍼플</translation></message>
+<message><source>翠绿</source><translation>에메랄드</translation></message>
+<message><source>落日橙</source><translation>선셋 오렌지</translation></message>
+<message><source>青色</source><translation>청록</translation></message>
+</context>
+<context><name>PythonEnv</name>
+<message><source>目录内未找到 python3XX.dll，不是完整的 Python 安装</source><translation>디렉터리에서 python3XX.dll을(를) 찾을 수 없습니다. 완전한 Python 설치가 아닙니다</translation></message>
+<message><source>路径为空</source><translation>경로가 비어 있음</translation></message>
+<message><source>文件不存在</source><translation>파일이 없습니다</translation></message>
+<message><source>Microsoft Store 应用执行别名（不可用）</source><translation>Microsoft Store 앱 실행 별칭(사용 불가)</translation></message>
+<message><source>重解析点占位文件（不可用）</source><translation>재분석 지점 자리 표시자 파일(사용 불가)</translation></message>
+<message><source>0 字节占位文件（不可用）</source><translation>0바이트 자리 표시자 파일(사용 불가)</translation></message>
+<message><source>来自注册表</source><translation>레지스트리에서</translation></message>
+<message><source>来自 PATH</source><translation>PATH에서</translation></message>
+<message><source>常见安装目录</source><translation>일반 설치 디렉터리</translation></message>
+<message><source>用户安装目录</source><translation>사용자 설치 디렉터리</translation></message>
+<message><source>来自 py 启动器</source><translation>py 실행기에서</translation></message>
+<message><source>无法启动该解释器。</source><translation>이 인터프리터를 시작할 수 없습니다.</translation></message>
+<message><source>解释器在 %1 秒内没有响应（已终止）。</source><translation>인터프리터가 %1초 안에 응답하지 않았습니다(종료됨).</translation></message>
+<message><source>解释器返回异常（exit=%1）。</source><translation>인터프리터가 비정상 종료했습니다(exit=%1).</translation></message>
+</context>
+<context><name>PythonPack</name>
+<message><source>图标文件过小。</source><translation>아이콘 파일이 너무 작습니다.</translation></message>
+<message><source>不是有效的 .ico 文件。</source><translation>유효한 .ico 파일이 아닙니다.</translation></message>
+<message><source>.ico 内没有可用图像。</source><translation>.ico에 사용할 수 있는 이미지가 없습니다.</translation></message>
+<message><source>解释器目录不存在：%1</source><translation>인터프리터 디렉터리가 없습니다: %1</translation></message>
+<message><source>未找到 tcl 目录，tkinter 界面可能无法启动。</source><translation>tcl 디렉터리를 찾지 못했습니다. tkinter 인터페이스가 시작되지 않을 수 있습니다.</translation></message>
+<message><source>已跳过 Lib/site-packages（第三方依赖）；如需随包请勾选「包含 site-packages」。</source><translation>Lib/site-packages(타사 종속성)를 건너뛰었습니다. 함께 포함하려면 "site-packages 포함"을 선택하세요.</translation></message>
+<message><source>缺少启动器 %1（应与 ESPackager.exe 位于同一目录）。</source><translation>실행기 %1이(가) 없습니다(ESPackager.exe와 같은 디렉터리에 있어야 합니다).</translation></message>
+<message><source>无法创建临时目录：%1</source><translation>임시 디렉터리를 만들 수 없습니다: %1</translation></message>
+<message><source>复制启动器失败：%1</source><translation>실행기 복사 실패: %1</translation></message>
+<message><source>图标替换失败（已使用默认图标）：%1</source><translation>아이콘 교체 실패(기본 아이콘 사용): %1</translation></message>
+<message><source>解释器目录中没有 python3XX.dll：%1</source><translation>인터프리터 디렉터리에 python3XX.dll이(가) 없습니다: %1</translation></message>
+<message><source>无法写入 launch.ini：%1</source><translation>launch.ini을(를) 쓸 수 없습니다: %1</translation></message>
+<message><source>无法读取图标：%1</source><translation>아이콘을 읽을 수 없습니다: %1</translation></message>
+<message><source>无法打开可执行文件以替换图标（错误码 %1）。</source><translation>아이콘을 교체하려고 실행 파일을 열 수 없습니다(오류 코드 %1).</translation></message>
+<message><source>写入图标资源失败（错误码 %1）。</source><translation>아이콘 리소스 쓰기 실패(오류 코드 %1).</translation></message>
+</context>
+<context><name>PythonPanel</name>
+<message><source>打包为 Python 应用（随包携带解释器，目标机无需安装 Python）</source><translation>Python 앱으로 패키징(인터프리터를 포함하므로 대상 컴퓨터에 Python 설치 불필요)</translation></message>
+<message><source>未探测</source><translation>감지 안 됨</translation></message>
+<message><source>Python 解释器</source><translation>Python 인터프리터</translation></message>
+<message><source>重新探测</source><translation>다시 감지</translation></message>
+<message><source>浏览…</source><translation>찾아보기…</translation></message>
+<message><source>入口脚本</source><translation>진입 스크립트</translation></message>
+<message><source>相对源目录，例如 main.py（项目文件会安装到 app\ 子目录）</source><translation>원본 디렉터리 기준, 예: main.py(프로젝트 파일은 app\ 하위 디렉터리에 설치됩니다)</translation></message>
+<message><source>选择…</source><translation>선택…</translation></message>
+<message><source>附加参数</source><translation>추가 인수</translation></message>
+<message><source>可选，例如 --config config.json</source><translation>선택 사항, 예: --config config.json</translation></message>
+<message><source>显示控制台窗口</source><translation>콘솔 창 표시</translation></message>
+<message><source>包含 site-packages（第三方依赖）</source><translation>site-packages 포함(타사 종속성)</translation></message>
+<message><source>应用图标</source><translation>앱 아이콘</translation></message>
+<message><source>可选 .ico，用作 exe / 快捷方式图标</source><translation>선택 사항 .ico, exe / 바로 가기 아이콘으로 사용</translation></message>
+<message><source>清除</source><translation>지우기</translation></message>
+<message><source>正在后台探测已安装的 Python…</source><translation>백그라운드에서 설치된 Python을 감지하는 중…</translation></message>
+<message><source>版本未知</source><translation>버전 알 수 없음</translation></message>
+<message><source>未找到可用的 Python 解释器（已跳过 Store 别名与占位文件）。</source><translation>사용 가능한 Python 인터프리터를 찾지 못했습니다(Store 별칭과 자리 표시자 파일 제외).</translation></message>
+<message><source>找到 %1 个可用解释器%2。</source><translation>사용 가능한 인터프리터 %1개를 찾았습니다%2.</translation></message>
+<message><source>（另有 %1 个不可用，已标注）</source><translation>(사용 불가 %1개 추가, 표시됨)</translation></message>
+<message><source>请选择有效的 Python 解释器。</source><translation>유효한 Python 인터프리터를 선택하세요.</translation></message>
+<message><source>随包携带 %1 个运行时文件，约 %2 MB（安装后占用相同空间）。</source><translation>런타임 파일 %1개(약 %2 MB)를 포함합니다(설치 후에도 같은 공간 사용).</translation></message>
+<message><source>选择 python.exe</source><translation>python.exe 선택</translation></message>
+<message><source>该文件不可用：%1</source><translation>이 파일은 사용할 수 없습니다: %1</translation></message>
+<message><source>手动选择</source><translation>수동 선택</translation></message>
+<message><source>目录内未找到 python3XX.dll</source><translation>디렉터리에서 python3XX.dll을(를) 찾을 수 없습니다</translation></message>
+<message><source>选择入口脚本</source><translation>진입 스크립트 선택</translation></message>
+<message><source>选择应用图标</source><translation>앱 아이콘 선택</translation></message>
+<message><source>请先选择有效的源目录。</source><translation>먼저 유효한 원본 디렉터리를 선택하세요.</translation></message>
+<message><source>请选择可用的 Python 解释器（可点「重新探测」）。</source><translation>사용 가능한 Python 인터프리터를 선택하세요("다시 감지" 클릭 가능).</translation></message>
+<message><source>所选解释器不可用：%1</source><translation>선택한 인터프리터는 사용할 수 없습니다: %1</translation></message>
+<message><source>解释器目录内未找到 python3XX.dll：%1</source><translation>인터프리터 디렉터리에서 python3XX.dll을(를) 찾지 못했습니다: %1</translation></message>
+<message><source>请填写入口脚本（例如 main.py）。</source><translation>진입 스크립트를 입력하세요(예: main.py).</translation></message>
+<message><source>找不到入口脚本：%1</source><translation>진입 스크립트를 찾을 수 없습니다: %1</translation></message>
+<message><source>找不到图标文件：%1</source><translation>아이콘 파일을 찾을 수 없습니다: %1</translation></message>
 </context>
 </TS>

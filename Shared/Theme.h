@@ -1,10 +1,16 @@
 #pragma once
-// Theme — 三件套统一视觉：无边框圆角窗口基类 + 现代 QSS + 程序图标
+// Theme — 三件套统一视觉：无边框圆角窗口基类 + 主题化 QSS + 程序图标
+//
+// 主题（配色 + 背景图）由 ThemeSpec 定义，安装器 / 卸载器可各自不同。
 
-#include <QWidget>
-#include <QString>
-#include <QSize>
+#include "ThemeSpec.h"
+
 #include <QIcon>
+#include <QImage>
+#include <QPixmap>
+#include <QSize>
+#include <QString>
+#include <QWidget>
 
 class QApplication;
 
@@ -13,21 +19,22 @@ namespace esp {
 // 按系统语言（或环境变量 ESP_LANG）加载内嵌翻译（esp_*.qm + qtbase_*.qm）
 void installTranslations(QApplication &app);
 
-// ---------- 配色 ----------
-constexpr const char *kColorAccent1 = "#4F6DF5"; // 主蓝
-constexpr const char *kColorAccent2 = "#8B5CF6"; // 渐变紫
-constexpr const char *kColorText = "#1F2430";
-constexpr const char *kColorMuted = "#6B7280";
-constexpr const char *kColorBg = "#F5F7FB";
+// ---------- 语义色（不随主题变化） ----------
 constexpr const char *kColorDanger = "#E5484D";
 constexpr const char *kColorOk = "#18A058";
 
-// 全局 QSS（浅色现代扁平风）
-QString globalStyleSheet();
+// 全局 QSS（由主题配色生成：主/次色 → 按钮、进度、焦点、复选框、侧栏渐变）
+QString globalStyleSheet(const ThemeStyle &theme);
+
+// 底部按钮栏样式（内容列底栏；存在背景图时半透明并保留右下圆角）
+QString bottomBarStyle(const ThemeStyle &theme);
 
 // 程序图标（QPainter 绘制：渐变圆角箱 + 上箭头），尺寸 size
 QIcon appIcon(int size = 64);
 QPixmap appPixmap(int size = 64);
+
+// 卡片容器：绘制圆角白底 + 主题背景图（整卡铺满，内部控件半透明处可透出）
+class BackdropCard;
 
 // ---------- 无边框圆角窗口 ----------
 // 用法：子类构造后调用 setContent()/setSidebar()；标题栏自动含 logo + 标题 + 最小化/关闭。
@@ -51,6 +58,10 @@ public:
     // 设置左侧渐变侧栏（可后于构造调用）
     void setSidebar(QWidget *sidebar);
 
+    // 应用主题（配色 + 背景图）。背景图在此处一次性有界解码并缓存，避免重绘时解码卡顿。
+    void applyTheme(const ThemeStyle &theme);
+    const ThemeStyle &theme() const { return theme_; }
+
     void setFixedClientSize(int w, int h);
     void setClosable(bool closable);
 
@@ -63,11 +74,13 @@ protected:
 private:
     void buildUi();
 
-    QWidget *card_ = nullptr;         // 圆角卡片（含阴影）
-    QWidget *sidebarSlot_ = nullptr;  // 侧栏占位容器
-    QWidget *contentSlot_ = nullptr;  // 内容占位容器
+    BackdropCard *card_ = nullptr;   // 圆角卡片（含阴影、背景图）
+    QWidget *sidebarSlot_ = nullptr; // 侧栏占位容器
+    QWidget *contentSlot_ = nullptr; // 内容占位容器
     QWidget *titleBarButtons_ = nullptr;
     class TitleBar *bar_ = nullptr;
+    ThemeStyle theme_;
+    QImage bgImage_;
     bool closable_ = true;
     QString title_;
 };

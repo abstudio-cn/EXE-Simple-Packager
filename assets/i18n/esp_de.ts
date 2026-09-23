@@ -48,6 +48,17 @@ Größe: %2 KB</translation></message>
 %1</source><translation>Paketerstellung fehlgeschlagen:
 %1</translation></message>
 <message><source>[提示] 源目录含多个 exe（%1），已默认选择 %2，可手动更改。</source><translation>[Hinweis] Das Quellverzeichnis enthält mehrere EXEs (%1). Standardauswahl: %2, manuell änderbar.</translation></message>
+<message><source>[警告] 未知的主题预设：%1</source><translation>[Warnung] Unbekanntes Theme-Preset: %1</translation></message>
+<message><source>[警告] 颜色格式非法（应为 #RRGGBB）：%1</source><translation>[Warnung] Ungültiges Farbformat (#RRGGBB erwartet): %1</translation></message>
+<message><source>[错误] </source><translation>[Fehler] </translation></message>
+<message><source>[错误] /auto 模式需要 /dir 与 /out 参数。</source><translation>[Fehler] Der /auto-Modus erfordert die Argumente /dir und /out.</translation></message>
+<message><source>卸载器主题</source><translation>Deinstallations-Theme</translation></message>
+<message><source>安装器主题</source><translation>Installer-Theme</translation></message>
+<message><source>已载入背景图 %1（%2×%3，%4 KB）。</source><translation>Hintergrundbild %1 geladen (%2×%3, %4 KB).</translation></message>
+<message><source>自定义安装器 / 卸载器的配色与背景图，右侧为实时预览</source><translation>Farben und Hintergrundbild von Installations- und Deinstallationsprogramm anpassen; rechts die Live-Vorschau</translation></message>
+<message><source>Python 打包</source><translation>Python-Paketierung</translation></message>
+<message><source>Python 应用：入口为打包生成的 &lt;应用名&gt;.exe（随包启动器）</source><translation>Python-App: Einstiegspunkt ist die erzeugte &lt;App-Name&gt;.exe (mitgelieferter Launcher)</translation></message>
+<message><source>[提示] </source><translation>[Hinweis] </translation></message>
 </context>
 <context><name>PackTask</name>
 <message><source>[错误] 缺少卸载器：%1（请确认 ESPUninstall.exe 与 ESPSetup.exe 位于同一目录）</source><translation>[Fehler] Deinstallationsprogramm fehlt: %1 (ESPUninstall.exe und ESPSetup.exe müssen im selben Verzeichnis liegen)</translation></message>
@@ -60,6 +71,18 @@ Größe: %2 KB</translation></message>
 <message><source>安装包生成完成，大小 %1 KB。</source><translation>Installationspaket erstellt, Größe %1 KB.</translation></message>
 <message><source>已提取主程序图标（%1 字节），随封包内嵌。</source><translation>Symbol des Hauptprogramms extrahiert (%1 Bytes) und in das Paket eingebettet.</translation></message>
 <message><source>[警告] 未能提取主程序图标：%1，安装器将使用默认图标。</source><translation>[Warnung] Symbol des Hauptprogramms konnte nicht extrahiert werden: %1. Standard-Symbol wird verwendet.</translation></message>
+<message><source>卸载器背景图 %1 KB（%2，不透明度 %3%）。</source><translation>Hintergrundbild des Deinstallationsprogramms %1 KB (%2, Deckkraft %3 %).</translation></message>
+<message><source>安装器主色 %1 / 副色 %2；卸载器主色 %3 / 副色 %4。</source><translation>Installer Primärfarbe %1 / Sekundärfarbe %2; Deinstallationsprogramm Primärfarbe %3 / Sekundärfarbe %4.</translation></message>
+<message><source>安装器背景图 %1 KB（%2，不透明度 %3%）。</source><translation>Hintergrundbild des Installationsprogramms %1 KB (%2, Deckkraft %3 %).</translation></message>
+<message><source>[错误] 无法创建临时目录。</source><translation>[Fehler] Temporäres Verzeichnis konnte nicht erstellt werden.</translation></message>
+<message><source>无法创建临时目录</source><translation>Temporäres Verzeichnis konnte nicht erstellt werden</translation></message>
+<message><source>Python 模式：解释器 %1</source><translation>Python-Modus: Interpreter %1</translation></message>
+<message><source>[警告] </source><translation>[Warnung] </translation></message>
+<message><source>已生成启动器 %1（%2 子系统）。</source><translation>Launcher %1 erzeugt (%2-Subsystem).</translation></message>
+<message><source>未能收集 Python 运行时文件：%1</source><translation>Python-Laufzeitdateien konnten nicht erfasst werden: %1</translation></message>
+<message><source>随包携带 Python 运行时：%1 个文件，%2 MB。</source><translation>Python-Laufzeit wird mitgeliefert: %1 Dateien, %2 MB.</translation></message>
+<message><source>[提示] </source><translation>[Hinweis] </translation></message>
+<message><source>项目文件将安装到 app\ 子目录，入口脚本 %1</source><translation>Projektdateien werden in das Unterverzeichnis app\ installiert; Einstiegsskript %1</translation></message>
 </context>
 <context><name>WizardWindow</name>
 <message><source>安装向导 · %1</source><translation>Installationsassistent · %1</translation></message>
@@ -120,6 +143,7 @@ Die Software wird „wie besehen“ ohne jegliche ausdrückliche oder stillschwe
 %3</translation></message>
 <message><source>%1 已成功安装到您的计算机。</source><translation>%1 wurde erfolgreich auf Ihrem Computer installiert.</translation></message>
 <message><source>安装失败</source><translation>Installation fehlgeschlagen</translation></message>
+<message><source>浏览…</source><translation>Durchsuchen…</translation></message>
 </context>
 <context><name>UninstallWindow</name>
 <message><source>卸载 · %1</source><translation>Deinstallation · %1</translation></message>
@@ -165,6 +189,8 @@ Die Software wird „wie besehen“ ohne jegliche ausdrückliche oder stillschwe
 <message><source>已固定到任务栏。</source><translation>An Taskleiste angeheftet.</translation></message>
 <message><source>安装完成。</source><translation>Installation abgeschlossen.</translation></message>
 <message><source>安装流程结束，有 %1 个步骤未成功。</source><translation>Installation beendet, %1 Schritte waren nicht erfolgreich.</translation></message>
+<message><source>写入卸载器主题背景图失败，卸载器将使用纯色主题。</source><translation>Schreiben des Hintergrundbilds für das Deinstallations-Theme fehlgeschlagen; es wird ein einfarbiges Theme verwendet.</translation></message>
+<message><source>已写入卸载器主题背景图（%1 KB）。</source><translation>Hintergrundbild des Deinstallations-Themes geschrieben (%1 KB).</translation></message>
 </context>
 <context><name>UninstallRunner</name>
 <message><source>未知程序</source><translation>Unbekanntes Programm</translation></message>
@@ -220,6 +246,12 @@ Die Software wird „wie besehen“ ohne jegliche ausdrückliche oder stillschwe
 <message><source>读取负载数据不完整。</source><translation>Lesen der Nutzlastdaten unvollständig.</translation></message>
 <message><source>无法打开安装器存根：%1</source><translation>Installer-Stub kann nicht geöffnet werden: %1</translation></message>
 <message><source>无法创建输出文件：%1</source><translation>Ausgabedatei kann nicht erstellt werden: %1</translation></message>
+<message><source>主题块损坏（标记缺失）。</source><translation>Theme-Block ist beschädigt (Marker fehlt).</translation></message>
+<message><source>主题块长度非法。</source><translation>Ungültige Länge des Theme-Blocks.</translation></message>
+<message><source>定位主题块失败。</source><translation>Theme-Block konnte nicht gefunden werden.</translation></message>
+<message><source>封包索引中的主题块范围非法（文件可能被截断）。</source><translation>Ungültiger Theme-Block-Bereich im Paketindex (Datei möglicherweise abgeschnitten).</translation></message>
+<message><source>读取卸载器背景图失败。</source><translation>Lesen des Hintergrundbilds des Deinstallationsprogramms fehlgeschlagen.</translation></message>
+<message><source>读取安装器背景图失败。</source><translation>Lesen des Hintergrundbilds des Installationsprogramms fehlgeschlagen.</translation></message>
 </context>
 <context><name>ZipHelper</name>
 <message><source>目录不存在：%1</source><translation>Verzeichnis existiert nicht: %1</translation></message>
@@ -243,5 +275,132 @@ Die Software wird „wie besehen“ ohne jegliche ausdrückliche oder stillschwe
 <message><source>创建注册表键失败 %1：</source><translation>Erstellen des Registry-Schlüssels fehlgeschlagen %1:</translation></message>
 <message><source>写入注册表值失败 %1\%2：</source><translation>Schreiben des Registry-Werts fehlgeschlagen %1\%2:</translation></message>
 <message><source>删除注册表键失败 %1：</source><translation>Löschen des Registry-Schlüssels fehlgeschlagen %1:</translation></message>
+</context>
+<context><name>ThemeEditor</name>
+<message><source>%1（%2×%3，%4 KB）</source><translation>%1 (%2×%3, %4 KB)</translation></message>
+<message><source>上一步</source><translation>Zurück</translation></message>
+<message><source>不透明度</source><translation>Deckkraft</translation></message>
+<message><source>主色</source><translation>Primärfarbe</translation></message>
+<message><source>侧栏主色</source><translation>Seitenleiste primär</translation></message>
+<message><source>侧栏副色</source><translation>Seitenleiste sekundär</translation></message>
+<message><source>副色</source><translation>Sekundärfarbe</translation></message>
+<message><source>卸载</source><translation>Deinstallieren</translation></message>
+<message><source>卸载 · %1</source><translation>Deinstallation · %1</translation></message>
+<message><source>卸载向导</source><translation>Deinstallationsassistent</translation></message>
+<message><source>取消</source><translation>Abbrechen</translation></message>
+<message><source>图片文件 (*.png *.jpg *.jpeg *.bmp *.webp *.gif);;所有文件 (*.*)</source><translation>Bilddateien (*.png *.jpg *.jpeg *.bmp *.webp *.gif);;Alle Dateien (*.*)</translation></message>
+<message><source>填充方式</source><translation>Füllmodus</translation></message>
+<message><source>安装</source><translation>Installieren</translation></message>
+<message><source>安装向导</source><translation>Installationsassistent</translation></message>
+<message><source>安装向导 · %1</source><translation>Installationsassistent · %1</translation></message>
+<message><source>安装完成</source><translation>Fertig</translation></message>
+<message><source>安装选项</source><translation>Installationsoptionen</translation></message>
+<message><source>完成</source><translation>Fertig</translation></message>
+<message><source>居中</source><translation>Zentriert</translation></message>
+<message><source>已选择</source><translation>Ausgewählt</translation></message>
+<message><source>平铺</source><translation>Kacheln</translation></message>
+<message><source>拉伸</source><translation>Strecken</translation></message>
+<message><source>效果预览</source><translation>Vorschau</translation></message>
+<message><source>未选择</source><translation>Nicht ausgewählt</translation></message>
+<message><source>欢迎</source><translation>Willkommen</translation></message>
+<message><source>正在卸载</source><translation>Deinstallation läuft</translation></message>
+<message><source>正在安装</source><translation>Installation</translation></message>
+<message><source>正在读取图片…</source><translation>Bild wird gelesen…</translation></message>
+<message><source>清除</source><translation>Entfernen</translation></message>
+<message><source>点击选择颜色</source><translation>Zum Auswählen einer Farbe klicken</translation></message>
+<message><source>确认卸载</source><translation>Deinstallation bestätigen</translation></message>
+<message><source>示例程序</source><translation>Beispielprogramm</translation></message>
+<message><source>背景图片</source><translation>Hintergrundbild</translation></message>
+<message><source>自定义</source><translation>Benutzerdefiniert</translation></message>
+<message><source>许可协议</source><translation>Lizenzvereinbarung</translation></message>
+<message><source>读取失败</source><translation>Lesen fehlgeschlagen</translation></message>
+<message><source>适应（留边）</source><translation>Einpassen (Ränder)</translation></message>
+<message><source>选择图片…</source><translation>Bild wählen…</translation></message>
+<message><source>选择背景图片</source><translation>Hintergrundbild wählen</translation></message>
+<message><source>铺满（裁剪）</source><translation>Füllen (zuschneiden)</translation></message>
+<message><source>预设配色</source><translation>Farb-Preset</translation></message>
+</context>
+<context><name>ThemeSpec</name>
+<message><source>品红</source><translation>Magenta</translation></message>
+<message><source>图片编码失败：%1</source><translation>Kodieren des Bilds fehlgeschlagen: %1</translation></message>
+<message><source>图片解码失败：%1（%2）</source><translation>Dekodieren des Bilds fehlgeschlagen: %1 (%2)</translation></message>
+<message><source>无法读取图片：%1（%2）</source><translation>Bild kann nicht gelesen werden: %1 (%2)</translation></message>
+<message><source>深海蓝</source><translation>Tiefblau</translation></message>
+<message><source>玫瑰红</source><translation>Rosé</translation></message>
+<message><source>石墨灰</source><translation>Graphit</translation></message>
+<message><source>经典蓝紫</source><translation>Klassisch Blauviolett</translation></message>
+<message><source>翠绿</source><translation>Smaragdgrün</translation></message>
+<message><source>落日橙</source><translation>Sonnenuntergangsorange</translation></message>
+<message><source>青色</source><translation>Petrol</translation></message>
+</context>
+<context><name>PythonEnv</name>
+<message><source>目录内未找到 python3XX.dll，不是完整的 Python 安装</source><translation>python3XX.dll im Verzeichnis nicht gefunden; keine vollständige Python-Installation</translation></message>
+<message><source>路径为空</source><translation>Leerer Pfad</translation></message>
+<message><source>文件不存在</source><translation>Datei existiert nicht</translation></message>
+<message><source>Microsoft Store 应用执行别名（不可用）</source><translation>Microsoft Store-App-Ausführungsalias (nicht verwendbar)</translation></message>
+<message><source>重解析点占位文件（不可用）</source><translation>Platzhalterdatei für Reparse Point (nicht verwendbar)</translation></message>
+<message><source>0 字节占位文件（不可用）</source><translation>0-Byte-Platzhalterdatei (nicht verwendbar)</translation></message>
+<message><source>来自注册表</source><translation>Aus der Registry</translation></message>
+<message><source>来自 PATH</source><translation>Aus PATH</translation></message>
+<message><source>常见安装目录</source><translation>Übliches Installationsverzeichnis</translation></message>
+<message><source>用户安装目录</source><translation>Benutzer-Installationsverzeichnis</translation></message>
+<message><source>来自 py 启动器</source><translation>Vom py-Launcher</translation></message>
+<message><source>无法启动该解释器。</source><translation>Dieser Interpreter konnte nicht gestartet werden.</translation></message>
+<message><source>解释器在 %1 秒内没有响应（已终止）。</source><translation>Der Interpreter hat nicht innerhalb von %1 Sekunden geantwortet (beendet).</translation></message>
+<message><source>解释器返回异常（exit=%1）。</source><translation>Der Interpreter meldete einen Fehler (exit=%1).</translation></message>
+</context>
+<context><name>PythonPack</name>
+<message><source>图标文件过小。</source><translation>Die Symboldatei ist zu klein.</translation></message>
+<message><source>不是有效的 .ico 文件。</source><translation>Keine gültige .ico-Datei.</translation></message>
+<message><source>.ico 内没有可用图像。</source><translation>Kein verwendbares Bild in der .ico-Datei.</translation></message>
+<message><source>解释器目录不存在：%1</source><translation>Interpreter-Verzeichnis existiert nicht: %1</translation></message>
+<message><source>未找到 tcl 目录，tkinter 界面可能无法启动。</source><translation>tcl-Verzeichnis nicht gefunden; tkinter-Oberflächen starten möglicherweise nicht.</translation></message>
+<message><source>已跳过 Lib/site-packages（第三方依赖）；如需随包请勾选「包含 site-packages」。</source><translation>Lib/site-packages (Drittanbieter-Abhängigkeiten) wurde übersprungen; zum Mitliefern "site-packages einschließen" aktivieren.</translation></message>
+<message><source>缺少启动器 %1（应与 ESPackager.exe 位于同一目录）。</source><translation>Launcher %1 fehlt (muss sich im selben Verzeichnis wie ESPackager.exe befinden).</translation></message>
+<message><source>无法创建临时目录：%1</source><translation>Temporäres Verzeichnis konnte nicht erstellt werden: %1</translation></message>
+<message><source>复制启动器失败：%1</source><translation>Launcher konnte nicht kopiert werden: %1</translation></message>
+<message><source>图标替换失败（已使用默认图标）：%1</source><translation>Symbolersetzung fehlgeschlagen (Standard-Symbol verwendet): %1</translation></message>
+<message><source>解释器目录中没有 python3XX.dll：%1</source><translation>Keine python3XX.dll im Interpreter-Verzeichnis: %1</translation></message>
+<message><source>无法写入 launch.ini：%1</source><translation>launch.ini konnte nicht geschrieben werden: %1</translation></message>
+<message><source>无法读取图标：%1</source><translation>Symbol konnte nicht gelesen werden: %1</translation></message>
+<message><source>无法打开可执行文件以替换图标（错误码 %1）。</source><translation>Die ausführbare Datei konnte zum Ersetzen des Symbols nicht geöffnet werden (Fehlercode %1).</translation></message>
+<message><source>写入图标资源失败（错误码 %1）。</source><translation>Schreiben der Symbolressource fehlgeschlagen (Fehlercode %1).</translation></message>
+</context>
+<context><name>PythonPanel</name>
+<message><source>打包为 Python 应用（随包携带解释器，目标机无需安装 Python）</source><translation>Als Python-App packen (Interpreter wird mitgeliefert; auf dem Zielrechner ist kein Python nötig)</translation></message>
+<message><source>未探测</source><translation>Nicht erkannt</translation></message>
+<message><source>Python 解释器</source><translation>Python-Interpreter</translation></message>
+<message><source>重新探测</source><translation>Erneut erkennen</translation></message>
+<message><source>浏览…</source><translation>Durchsuchen…</translation></message>
+<message><source>入口脚本</source><translation>Einstiegsskript</translation></message>
+<message><source>相对源目录，例如 main.py（项目文件会安装到 app\ 子目录）</source><translation>Relativ zum Quellverzeichnis, z. B. main.py (Projektdateien werden in das Unterverzeichnis app\ installiert)</translation></message>
+<message><source>选择…</source><translation>Auswählen…</translation></message>
+<message><source>附加参数</source><translation>Zusätzliche Argumente</translation></message>
+<message><source>可选，例如 --config config.json</source><translation>Optional, z. B. --config config.json</translation></message>
+<message><source>显示控制台窗口</source><translation>Konsolenfenster anzeigen</translation></message>
+<message><source>包含 site-packages（第三方依赖）</source><translation>site-packages einschließen (Drittanbieter-Abhängigkeiten)</translation></message>
+<message><source>应用图标</source><translation>Anwendungssymbol</translation></message>
+<message><source>可选 .ico，用作 exe / 快捷方式图标</source><translation>Optionales .ico als Symbol für EXE / Verknüpfung</translation></message>
+<message><source>清除</source><translation>Entfernen</translation></message>
+<message><source>正在后台探测已安装的 Python…</source><translation>Installiertes Python wird im Hintergrund erkannt…</translation></message>
+<message><source>版本未知</source><translation>Version unbekannt</translation></message>
+<message><source>未找到可用的 Python 解释器（已跳过 Store 别名与占位文件）。</source><translation>Kein verwendbarer Python-Interpreter gefunden (Store-Aliase und Platzhalterdateien übersprungen).</translation></message>
+<message><source>找到 %1 个可用解释器%2。</source><translation>%1 verwendbare Interpreter gefunden%2.</translation></message>
+<message><source>（另有 %1 个不可用，已标注）</source><translation> (%1 weitere nicht verwendbar, markiert)</translation></message>
+<message><source>请选择有效的 Python 解释器。</source><translation>Bitte einen gültigen Python-Interpreter wählen.</translation></message>
+<message><source>随包携带 %1 个运行时文件，约 %2 MB（安装后占用相同空间）。</source><translation>%1 Laufzeitdateien werden mitgeliefert, ca. %2 MB (gleicher Speicherbedarf nach der Installation).</translation></message>
+<message><source>选择 python.exe</source><translation>python.exe wählen</translation></message>
+<message><source>该文件不可用：%1</source><translation>Diese Datei ist nicht verwendbar: %1</translation></message>
+<message><source>手动选择</source><translation>Manuell ausgewählt</translation></message>
+<message><source>目录内未找到 python3XX.dll</source><translation>python3XX.dll im Verzeichnis nicht gefunden</translation></message>
+<message><source>选择入口脚本</source><translation>Einstiegsskript wählen</translation></message>
+<message><source>选择应用图标</source><translation>Anwendungssymbol wählen</translation></message>
+<message><source>请先选择有效的源目录。</source><translation>Bitte zuerst ein gültiges Quellverzeichnis wählen.</translation></message>
+<message><source>请选择可用的 Python 解释器（可点「重新探测」）。</source><translation>Bitte einen verwendbaren Python-Interpreter wählen (über "Erneut erkennen").</translation></message>
+<message><source>所选解释器不可用：%1</source><translation>Der gewählte Interpreter ist nicht verwendbar: %1</translation></message>
+<message><source>解释器目录内未找到 python3XX.dll：%1</source><translation>python3XX.dll im Interpreter-Verzeichnis nicht gefunden: %1</translation></message>
+<message><source>请填写入口脚本（例如 main.py）。</source><translation>Bitte das Einstiegsskript angeben (z. B. main.py).</translation></message>
+<message><source>找不到入口脚本：%1</source><translation>Einstiegsskript nicht gefunden: %1</translation></message>
+<message><source>找不到图标文件：%1</source><translation>Symboldatei nicht gefunden: %1</translation></message>
 </context>
 </TS>

@@ -101,7 +101,7 @@ int runInstall(const QByteArray &zipData, const InstallOptions &o,
         log(tr_("[错误] 解压卸载器运行时失败：") + err);
         failures++;
     }
-    if (!unzipToDir(zipData, installDir, QString(), nullptr, &err)) {
+    if (!unzipToDir(zipData, installDir, QString(), nullptr, &err, QStringLiteral("__esp_uninstall/"))) {
         log(tr_("[错误] 解压应用文件失败：") + err);
         failures++;
     } else {
@@ -146,12 +146,33 @@ int runInstall(const QByteArray &zipData, const InstallOptions &o,
     ini.set(QStringLiteral("Cleanup"), QStringLiteral("InstallScript"), QString());
     ini.set(QStringLiteral("Cleanup"), QStringLiteral("UninstallScript"), QString());
     ini.set(QStringLiteral("Cleanup"), QStringLiteral("DeleteInstallDir"), QStringLiteral("1"));
+
+    // 4.5 卸载器外观：背景图落盘 + [Theme] 段（卸载器运行时读取）
+    QString themeBgName;
+    if (o.uninstallTheme.hasBackground()) {
+        static const char pngSig[8] = {char(0x89), 'P', 'N', 'G', '\r', '\n', 0x1a, '\n'};
+        const QByteArray &img = o.uninstallTheme.bgImage;
+        const bool png = img.size() >= 8 && img.left(8) == QByteArray(pngSig, 8);
+        themeBgName = QStringLiteral("esp_theme_bg%1")
+                          .arg(png ? QStringLiteral(".png") : QStringLiteral(".jpg"));
+        QFile bf(QDir(installDir).filePath(themeBgName));
+        if (bf.open(QIODevice::WriteOnly | QIODevice::Truncate) && bf.write(img) == qint64(img.size())) {
+            bf.close();
+            log(tr_("已写入卸载器主题背景图（%1 KB）。").arg(img.size() / 1024.0, 0, 'f', 1));
+        } else {
+            themeBgName.clear();
+            warn(tr_("写入卸载器主题背景图失败，卸载器将使用纯色主题。"));
+        }
+    }
+    writeThemeToIni(&ini, o.uninstallTheme, themeBgName);
+
     if (!ini.save(&err)) {
         log(tr_("[错误] 写入卸载配置失败：") + err);
         failures++;
     } else {
         log(tr_("已写入卸载配置 uninstall.ini。"));
     }
+    setP(82);
 
     // 5. 注册表卸载项（控制面板）
     const QString uninstallKey = QStringLiteral("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\") + o.appId;

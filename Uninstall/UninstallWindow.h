@@ -1,4 +1,6 @@
 #pragma once
+#include "../Shared/ThemeSpec.h"
+
 #include <QWidget>
 #include <QString>
 #include <QStringList>
@@ -37,7 +39,8 @@ class UninstallWindow : public QWidget
 {
     Q_OBJECT
 public:
-    explicit UninstallWindow(const QString &iniPath, QWidget *parent = nullptr);
+    explicit UninstallWindow(const QString &iniPath, const esp::ThemeStyle &theme,
+                             QWidget *parent = nullptr);
 
     // 显示内部 ModernWindow
     void show();
@@ -54,6 +57,7 @@ private:
     QString iniPath_;
     QString appName_;
     QString installDir_;
+    esp::ThemeStyle theme_;
     QPixmap mainIcon_;
     QStackedWidget *stack_ = nullptr;
     QVector<QLabel *> stepLabels_;
